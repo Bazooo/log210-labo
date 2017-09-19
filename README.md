@@ -1,24 +1,15 @@
-# README
+# LOG210
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Installation de docker
+https://docs.docker.com/engine/installation/
 
-Things you may want to cover:
+# Installation de docker-compose
+https://docs.docker.com/compose/install/
 
-* Ruby version
+Pour rouler l'application dans le docker
 
-* System dependencies
+```
+docker-compose build
+docker-compose up
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
