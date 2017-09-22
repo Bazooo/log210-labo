@@ -18,3 +18,16 @@ docker-compose up
 # Creer la db dans le serveur bd
 docker-compose run web rake db:create
 ```
+
+Accès au terminal de l'application rails
+
+
+Noter le container id du container web avec la commande
+```
+docker ps
+```
+
+Ensuite utiliser la commande docker exec pour lancer un terminal bash
+```
+docker exec -it <container id> bash
+```
