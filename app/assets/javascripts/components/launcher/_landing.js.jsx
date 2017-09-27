@@ -1,5 +1,3 @@
-console.log("ayy")
-
 class Landing extends React.Component {
     render() {
         const users = this.props.users.map(user =>
