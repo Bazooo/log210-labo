@@ -17,8 +17,8 @@
                 destroyPath: destroy_user_session_path
             })
         %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <%= react_component('Notice', {text: notice}) %>
+        <%= react_component('Alert', {text: alert}) %>
         <%= yield %>
     </body>
 </html>
