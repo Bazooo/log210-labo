@@ -14,6 +14,14 @@ gem 'pg'
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# Use Bootstrap for styling
+gem 'bootstrap-sass'
+# Use jQuery for bootstrap-sass
+gem 'jquery-rails'
+# Use React for the DOM rendering
+gem 'react-rails'
+# Use ES6 for easier integration for React
+gem 'sprockets-es6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
@@ -27,6 +35,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use devise as authentification
 gem 'devise'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
