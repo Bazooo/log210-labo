@@ -15,6 +15,6 @@ class Alert extends BubbleMessage {
 
 class Notice extends BubbleMessage {
     render() {
-        return super.render("warning", this.props.text);
+        return super.render("success", this.props.text);
     }
 }
