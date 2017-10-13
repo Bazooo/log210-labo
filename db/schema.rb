@@ -10,10 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170922140612) do
+ActiveRecord::Schema.define(version: 20171013143149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adresses", force: :cascade do |t|
+    t.string "no_civique"
+    t.string "rue"
+    t.string "ville"
+    t.string "province"
+    t.string "code_postal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "organismes_id"
+    t.index ["organismes_id"], name: "index_adresses_on_organismes_id"
+  end
+
+  create_table "organismes", force: :cascade do |t|
+    t.string "nom"
+    t.string "couriel"
+    t.string "site_web"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "telephones", force: :cascade do |t|
+    t.string "bureau"
+    t.string "telecopie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "organismes_id"
+    t.index ["organismes_id"], name: "index_telephones_on_organismes_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,4 +68,6 @@ ActiveRecord::Schema.define(version: 20170922140612) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "adresses", "organismes", column: "organismes_id"
+  add_foreign_key "telephones", "organismes", column: "organismes_id"
 end
