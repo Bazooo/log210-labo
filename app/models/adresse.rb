@@ -1,3 +1,3 @@
 class Adresse < ApplicationRecord
-  belongs_to :organisme
+    belongs_to :organismes
 end

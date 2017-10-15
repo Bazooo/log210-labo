@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171013143149) do
+ActiveRecord::Schema.define(version: 20171015181928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,6 @@ ActiveRecord::Schema.define(version: 20171013143149) do
     t.string "code_postal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organismes_id"
-    t.index ["organismes_id"], name: "index_adresses_on_organismes_id"
   end
 
   create_table "organismes", force: :cascade do |t|
@@ -33,6 +31,10 @@ ActiveRecord::Schema.define(version: 20171013143149) do
     t.string "site_web"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "adresses_id"
+    t.bigint "telephones_id"
+    t.index ["adresses_id"], name: "index_organismes_on_adresses_id"
+    t.index ["telephones_id"], name: "index_organismes_on_telephones_id"
   end
 
   create_table "telephones", force: :cascade do |t|
@@ -40,8 +42,6 @@ ActiveRecord::Schema.define(version: 20171013143149) do
     t.string "telecopie"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organismes_id"
-    t.index ["organismes_id"], name: "index_telephones_on_organismes_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,6 +68,6 @@ ActiveRecord::Schema.define(version: 20171013143149) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "adresses", "organismes", column: "organismes_id"
-  add_foreign_key "telephones", "organismes", column: "organismes_id"
+  add_foreign_key "organismes", "adresses", column: "adresses_id"
+  add_foreign_key "organismes", "telephones", column: "telephones_id"
 end

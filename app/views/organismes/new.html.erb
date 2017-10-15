@@ -1,0 +1,55 @@
+<%= form_for @organisme do |form| %>
+<h2><%= form.label :organismes %> </h2>
+  <p>
+    <%= form.label :nom %><br>
+    <%= form.text_field :nom %>
+  </p>
+
+  <p>
+    <%= form.label :couriel %><br>
+    <%= form.text_field :couriel %>
+  </p>
+
+  <p>
+    <%= form.label :site_web %><br>
+    <%= form.text_field :site_web %>
+  </p>
+    <%= form.fields_for :adresse do |address_form| %>
+        <h2> <%= address_form.label :adresses%> </h2>
+        <p>
+            <%= address_form.label :no_civique %><br>
+            <%= address_form.text_field :no_civique %>
+        </p>
+        <p>
+            <%= address_form.label :rue %><br>
+            <%= address_form.text_field :rue %>
+        </p>
+        <p>
+            <%= address_form.label :ville %><br>
+            <%= address_form.text_field :ville %>
+        </p>
+        <p>
+            <%= address_form.label :province %><br>
+            <%= address_form.text_field :province %>
+        </p>
+        <p>
+            <%= address_form.label :code_postal %><br>
+            <%= address_form.text_field :code_postal %>
+        </p>
+    <% end %>
+    <%= form.fields_for :telephone do |telephones_form| %>
+    <h2> <%= telephones_form.label :telephones%> </h2>
+
+    <p>
+        <%= telephones_form.label :bureau %><br>
+        <%= telephones_form.text_field :bureau %>
+    </p>
+    <p>
+        <%= telephones_form.label :telecopie %><br>
+        <%= telephones_form.text_field :telecopie %>
+    </p>
+    <% end %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
