@@ -1,6 +1,5 @@
 <p>
-  <strong>Nom:</strong>
-  <%= @organisme.nom %>
+  <h1><%= @organisme.nom %></h2>
 </p>
 <p>
   <strong>Couriel:</strong>
@@ -10,5 +9,31 @@
   <strong>Site Web:</strong>
   <%= @organisme.site_web %>
 </p>
+<h2> Adresse: </h2>
+<p>
+    <strong>Numero Civique:</strong>
+    <%= @organisme.adresse.no_civique %>
+</p>
+<p>
+    <strong>Rue:</strong>
+    <%= @organisme.adresse.rue %>
+</p>
+<p>
+    <strong>Ville:</strong>
+    <%= @organisme.adresse.ville %>
+</p>
+<p>
+    <strong>Code Postal:</strong>
+    <%= @organisme.adresse.code_postal %>
+</p>
 
 
+<h2> Telephone: </h2>
+<p>
+    <strong>Bureau:</strong>
+    <%= @organisme.telephone.bureau %>
+</p>
+<p>
+    <strong>Telecopie:</strong>
+    <%= @organisme.telephone.telecopie %>
+</p>
