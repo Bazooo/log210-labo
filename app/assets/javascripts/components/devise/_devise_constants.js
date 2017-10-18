@@ -19,7 +19,7 @@ class DeviseConstants {
     }
 
     _createAction(name) {
-        return "/" + this._modelName + "s/" + name;
+        return "/my/" + this._modelName + "s/" + name;
     }
 }
 
