@@ -1,39 +1,33 @@
-<p>
-  <h1><%= @organisme.nom %></h2>
-</p>
-<p>
-  <strong>Couriel:</strong>
-  <%= @organisme.couriel %>
-</p>
-<p>
-  <strong>Site Web:</strong>
-  <%= @organisme.site_web %>
-</p>
-<h2> Adresse: </h2>
-<p>
-    <strong>Numero Civique:</strong>
-    <%= @organisme.adresse.no_civique %>
-</p>
-<p>
-    <strong>Rue:</strong>
-    <%= @organisme.adresse.rue %>
-</p>
-<p>
-    <strong>Ville:</strong>
-    <%= @organisme.adresse.ville %>
-</p>
-<p>
-    <strong>Code Postal:</strong>
-    <%= @organisme.adresse.code_postal %>
-</p>
+<h2><%= @organisme.nom %></h2>
+<div class="row">
+  <div class="col-sm-4">
+    <p>
+      <strong>Couriel:</strong>
+      <%= @organisme.couriel %><br>
+      <strong>Site Web:</strong>
+      <%= @organisme.site_web %>
 
-
-<h2> Telephone: </h2>
-<p>
-    <strong>Bureau:</strong>
-    <%= @organisme.telephone.bureau %>
-</p>
-<p>
-    <strong>Telecopie:</strong>
-    <%= @organisme.telephone.telecopie %>
-</p>
+    </p>
+  </div>
+  <div class="col-sm-4">
+    <p>
+      <strong>Numero Civique:</strong>
+      <%= @organisme.adresse.no_civique %><br>
+      <strong>Rue:</strong>
+      <%= @organisme.adresse.rue %><br>
+      <strong>Ville:</strong>
+      <%= @organisme.adresse.ville %><br>
+      <strong>Code Postal:</strong>
+      <%= @organisme.adresse.code_postal %>
+    </p>
+  </div>
+  <div class="col-sm-4">
+    <p>
+      <strong>Bureau:</strong>
+      <%= @organisme.telephone.bureau %><br>
+      <strong>Telecopie:</strong>
+      <%= @organisme.telephone.telecopie %>
+    </p>
+  </div>
+</div>
+<%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, organismes_path() %>

@@ -1,22 +1,41 @@
-<h1>Listing Organimses</h1>
-<table>
-  <tr>
-    <th>Nom</th>
-    <th>couriel</th>
-    <th>site web</th>
-    <th colspan="3"></th>
-  </tr>
+<h2> Listing Organimses <%= link_to '<span class="glyphicon glyphicon glyphicon-plus"></span>'.html_safe, new_organisme_path() %> </h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Couriel</th>
+        <th>SiteWeb</th>
+        <th>Numero civique</th>
+        <th>Rue</th>>
+        <th>Ville</th>
+        <th>Province</th>
+        <th>Code Postal</th>
+        <th>Bureau</th>
+        <th>Telecopie</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @organismes.each do |organisme| %>
+      <tr>
+        <td><%= organisme.nom %></td>
+        <td><%= organisme.couriel %></td>
+        <td><%= organisme.site_web %></td>
+        <td><%= organisme.adresse.no_civique %></td>
+        <td><%= organisme.adresse.rue %></td>
+        <td><%= organisme.adresse.ville %></td>
+        <td><%= organisme.adresse.province %></td>
+        <td><%= organisme.adresse.code_postal %></td>
+        <td><%= organisme.telephone.bureau %></td>
+        <td><%= organisme.telephone.telecopie %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, organisme_path(organisme) %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_organisme_path(organisme) %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, organisme_path(organisme),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-  <% @organismes.each do |organisme| %>
-    <tr>
-      <td><%= organisme.nom %></td>
-      <td><%= organisme.couriel %></td>
-      <td><%= organisme.site_web %></td>
-      <td><%= link_to 'Show', organisme_path(organisme) %></td>
-      <td><%= link_to 'Edit', edit_organisme_path(organisme) %></td>
-      <td><%= link_to 'Destroy', organisme_path(organisme),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
+
 </table>
