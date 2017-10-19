@@ -1,19 +1,32 @@
+<% if @organisme.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@organisme.errors.count, "error") %> prohibited
+            this organisme from being saved:
+        </h2>
+          <ul>
+            <% @organisme.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 <%= form_for @organisme do |form| %>
-<h2><%= form.label Organisme %> </h2>
-  <p>
-    <%= form.label :nom %><br>
-    <%= form.text_field :nom %>
-  </p>
+    <h2><%= form.label Organisme %> </h2>
+    <p>
+        <%= form.label :nom %><br>
+        <%= form.text_field :nom %>
+    </p>
 
-  <p>
-    <%= form.label :couriel %><br>
-    <%= form.text_field :couriel %>
-  </p>
+    <p>
+        <%= form.label :couriel %><br>
+        <%= form.text_field :couriel %>
+    </p>
 
-  <p>
-    <%= form.label :site_web %><br>
-    <%= form.text_field :site_web %>
-  </p>
+    <p>
+        <%= form.label :site_web %><br>
+        <%= form.text_field :site_web %>
+    </p>
     <%= form.fields_for :adresse do |address_form| %>
         <h2> Adresse: </h2>
         <p>
@@ -38,16 +51,16 @@
         </p>
     <% end %>
     <%= form.fields_for :telephone do |telephones_form| %>
-    <h2> Telephone: </h2>
+        <h2> Telephone: </h2>
 
-    <p>
-        <%= telephones_form.label :bureau %><br>
-        <%= telephones_form.text_field :bureau %>
-    </p>
-    <p>
-        <%= telephones_form.label :telecopie %><br>
-        <%= telephones_form.text_field :telecopie %>
-    </p>
+        <p>
+            <%= telephones_form.label :bureau %><br>
+            <%= telephones_form.text_field :bureau %>
+        </p>
+        <p>
+            <%= telephones_form.label :telecopie %><br>
+            <%= telephones_form.text_field :telecopie %>
+        </p>
     <% end %>
   <p>
     <%= form.submit %>

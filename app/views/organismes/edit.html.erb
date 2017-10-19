@@ -1,3 +1,16 @@
+<% if @organisme.errors.any? %>
+    <div id="error_explanation">
+        <h2>
+            <%= pluralize(@organisme.errors.count, "error") %> prohibited
+            this organisme from being saved:
+        </h2>
+          <ul>
+            <% @organisme.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 <h1>Edit organismes</h1>
 <%= form_for @organisme do |form| %>
 <h2><%= form.label Organisme %> </h2>
