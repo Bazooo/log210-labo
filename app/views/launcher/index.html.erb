@@ -1,2 +1,3 @@
 <% @users = User.all %>
 <%= react_component('Landing', {users: @users}) %>
+<%= react_component('LandingCreateUserForm', {token: form_authenticity_token, userRole: current_user.role, roles: User.roles.keys}) %>

@@ -10,10 +10,18 @@ class Landing extends React.Component {
                     <div className="panel-title">Utilisateurs</div>
                 </div>
                 <div className="panel-body">
-                    {users}
-                </div>
-                <div>
-                    <a ></a>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Email</th>
+                                <th>Rôle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );
@@ -24,10 +32,11 @@ class User extends React.Component {
     render() {
         const user = this.props.user;
         return(
-            <ul className="list-group">
-                <li key="email" className="list-group-item">{user.email}</li>
-                <li key="role" className="list-group-item">{user.role}</li>
-            </ul>
+            <tr>
+                <th scope="row">{user.id}</th>
+                <td>{user.email}</td>
+                <td>{user.role}</td>
+            </tr>
         );
     }
 }
