@@ -1,3 +1,5 @@
 <% @users = User.all %>
 <%= react_component('Landing', {users: @users}) %>
-<%= react_component('LandingCreateUserForm', {token: form_authenticity_token, userRole: current_user.role, roles: User.roles.keys}) %>
+<% if current_user.role == "directeur" || current_user.role == "coordonateur" %>
+    <%= react_component('LandingCreateUserForm', {token: form_authenticity_token, userRole: current_user.role, roles: User.roles.keys}) %>
+<% end %>

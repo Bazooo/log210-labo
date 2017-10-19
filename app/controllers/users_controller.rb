@@ -20,18 +20,19 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(secure_params)
+    @user = User.new(user_params)
     if @user.save
       redirect_to root_path, :notice => "User Created."
     else
       render new#Pas mal sur que si le save plante, le render new va rien faire de bon...
     end
+
   end
 
   def update
     @user = User.find(params[:id])
     @roles = User.roles
-    if @user.update_attributes(secure_params)
+    if @user.update_attributes(user_params)
       redirect_to users_path, :notice => "User updated."
     else
       redirect_to users_path, :alert => "Unable to update user."
@@ -58,7 +59,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def secure_params
-    params.require(:user).permit(:email, :role, :password)
+  def user_params
+    params.require(:user).permit(:email, :password, :role)
   end
 end

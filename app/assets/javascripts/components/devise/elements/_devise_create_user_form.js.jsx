@@ -1,11 +1,13 @@
 class DeviseCreateUserForm extends React.Component {
     render() {
         const action = _devise_constants.getActions().create_user;
+        const allRoles = this.props.roles;
+        const roles = allRoles.slice(allRoles.indexOf(this.props.userRole));
         let content = (
             <div>
                 <DeviseInputEmail />
                 <DeviseInputPassword />
-                <DeviseInputRole roles={this.props.roles} />
+                <DeviseInputRole roles={roles} />
                 <DeviseButtonCreate />
             </div>
         );
