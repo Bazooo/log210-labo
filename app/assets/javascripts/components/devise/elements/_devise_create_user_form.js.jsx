@@ -9,6 +9,7 @@ class DeviseCreateUserForm extends React.Component {
                 <DeviseButtonCreate />
             </div>
         );
+        let method = "post";
 
         return(
             <div className="panel panel-primary">
@@ -19,6 +20,7 @@ class DeviseCreateUserForm extends React.Component {
                     <RestForm token={this.props.token}
                         content={content}
                         action={action}
+                        method={method}
                     />
                 </div>
             </div>

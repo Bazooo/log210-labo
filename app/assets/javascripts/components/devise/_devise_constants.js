@@ -3,7 +3,7 @@ class DeviseConstants {
         this._modelName = "user";
         this._actions = {
             sign_in: this._createAction("/my/", "sign_in"),
-            create_user: this._createAction("", ""),
+            create_user: this._createUser("", ""),
         };
     }
 
@@ -21,6 +21,10 @@ class DeviseConstants {
 
     _createAction(prefix, postfix) {
         return prefix + this._modelName + "s/" + postfix;
+    }
+
+    _createUser(prefix, postfix) {
+        return prefix + "/create_user/" + postfix;{/* Juste pour le moment */}
     }
 }
 
