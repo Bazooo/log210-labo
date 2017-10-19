@@ -15,6 +15,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def create
+      @user = User.new(new_user_params)
+      redirect_to @user, :notice => new_user_params
+
+  end
+
   def update
     @user = User.find(params[:id])
     @roles = User.roles
@@ -47,5 +53,9 @@ class UsersController < ApplicationController
 
   def secure_params
     params.require(:user).permit(:role)
+  end
+
+  def new_user_params
+    params.require(:user).permit(:email, :password, :role)
   end
 end
