@@ -1,10 +1,5 @@
 class User < ApplicationRecord
-  enum role:[ :directeur, :coordonateur, :assistant, :user ]
-  #after_initialize :set_default_role, :if => :new_record?
-
-  def set_default_role
-    self.role ||= :user
-  end
+  enum role:[ :directeur, :coordonateur, :assistant ]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
