@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum role:[ :directeur, :coordonateur, :assistant ]
+  enum role:[ :directeur, :coordonateur, :assistant, :intervenant ]
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

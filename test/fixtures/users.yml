@@ -19,6 +19,6 @@ two:
 #
 
 three:
-    email: foo@bar.com
+    email: fooo@bar.com
     role: assistant
     confirmed_at: 2017-10-20 00:51:05.973703
