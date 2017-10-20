@@ -22,6 +22,35 @@ ActiveRecord::Schema.define(version: 20171017034522) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "adresses", force: :cascade do |t|
+    t.string "no_civique"
+    t.string "rue"
+    t.string "ville"
+    t.string "province"
+    t.string "code_postal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "organisme_id"
+    t.index ["organisme_id"], name: "index_adresses_on_organisme_id"
+  end
+
+  create_table "organismes", force: :cascade do |t|
+    t.string "nom"
+    t.string "couriel"
+    t.string "site_web"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "telephones", force: :cascade do |t|
+    t.string "bureau"
+    t.string "telecopie"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "organisme_id"
+    t.index ["organisme_id"], name: "index_telephones_on_organisme_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

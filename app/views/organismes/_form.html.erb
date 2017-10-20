@@ -1,0 +1,58 @@
+<% if @organisme.errors.any? %>
+    <div id="error_explanation">
+          <ul style="list-style-type:none">
+            <% @organisme.errors.full_messages.each do |msg| %>
+              <li><%= react_component('Alert', {text: msg}) %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+        <%= react_component('Alert', {text: alert}) %>
+<%= form_for @organisme do |form| %>
+    <h2>Nouvel Organisme </h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <%= form.label :nom %><br>
+            <%= form.text_field :nom %><br>
+
+            <%= form.label :couriel %><br>
+            <%= form.text_field :couriel %><br>
+
+            <%= form.label :site_web %><br>
+            <%= form.text_field :site_web %>
+        </div>
+
+
+        <%= form.fields_for :adresse do |address_form| %>
+            <div class="col-sm-4">
+                <%= address_form.label :no_civique %><br>
+                <%= address_form.text_field :no_civique %><br>
+
+                <%= address_form.label :rue %><br>
+                <%= address_form.text_field :rue %><br>
+
+                <%= address_form.label :ville %><br>
+                <%= address_form.text_field :ville %><br>
+
+                <%= address_form.label :province %><br>
+                <%= address_form.text_field :province %><br>
+
+                <%= address_form.label :code_postal %><br>
+                <%= address_form.text_field :code_postal %><br>
+            </div>
+        <% end %>
+        <%= form.fields_for :telephone do |telephones_form| %>
+
+            <div class="col-sm-4">
+                <%= telephones_form.label :bureau %><br>
+                <%= telephones_form.text_field :bureau %><br>
+
+                <%= telephones_form.label :telecopie %><br>
+                <%= telephones_form.text_field :telecopie %><br>
+            </div>
+        <% end %>
+    </div>
+    <div class="row">
+        <%= form.submit %>
+    </div>
+<% end %>
