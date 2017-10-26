@@ -2,11 +2,12 @@
 <table class="table table-striped">
     <thead>
       <tr>
+        <th></th>
         <th>Nom</th>
         <th>Couriel</th>
         <th>SiteWeb</th>
         <th>Numero civique</th>
-        <th>Rue</th>>
+        <th>Rue</th>
         <th>Ville</th>
         <th>Province</th>
         <th>Code Postal</th>
@@ -17,6 +18,11 @@
     <tbody>
     <% @organismes.each do |organisme| %>
       <tr>
+        <td>
+            <% if organisme.active == true %>
+                <span class="glyphicon glyphicon-record">
+            <% end %>
+        </td>
         <td><%= organisme.nom %></td>
         <td><%= organisme.couriel %></td>
         <td><%= organisme.site_web %></td>
@@ -29,9 +35,14 @@
         <td><%= organisme.telephone.telecopie %></td>
         <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, organisme_path(organisme) %></td>
         <td><%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_organisme_path(organisme) %></td>
-        <td><%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, organisme_path(organisme),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+            <% if organisme.active == true %>
+                <%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, organisme_path(organisme),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </td>
       </tr>
     <% end %>
     </tbody>

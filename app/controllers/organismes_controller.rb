@@ -35,7 +35,7 @@ class OrganismesController < ApplicationController
 
     def destroy #delete instance
         @organisme = Organisme.find(params[:id])
-        @organisme.destroy
+        @organisme.update_attribute(:active, false)
         redirect_to organismes_path
     end
 
