@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026181039) do
+ActiveRecord::Schema.define(version: 20171026202948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,33 +23,33 @@ ActiveRecord::Schema.define(version: 20171026181039) do
   end
 
   create_table "adresses", force: :cascade do |t|
-    t.string "no_civique"
-    t.string "rue"
-    t.string "ville"
+    t.string "civic_number"
+    t.string "street"
+    t.string "city"
     t.string "province"
-    t.string "code_postal"
+    t.string "postcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organisme_id"
-    t.index ["organisme_id"], name: "index_adresses_on_organisme_id"
+    t.bigint "reforganism_id"
+    t.index ["reforganism_id"], name: "index_adresses_on_reforganism_id"
   end
 
-  create_table "organismes", force: :cascade do |t|
-    t.string "nom"
-    t.string "couriel"
-    t.string "site_web"
+  create_table "reforganisms", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
   end
 
   create_table "telephones", force: :cascade do |t|
-    t.string "bureau"
-    t.string "telecopie"
+    t.string "work"
+    t.string "fax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organisme_id"
-    t.index ["organisme_id"], name: "index_telephones_on_organisme_id"
+    t.bigint "reforganism_id"
+    t.index ["reforganism_id"], name: "index_telephones_on_reforganism_id"
   end
 
   create_table "users", force: :cascade do |t|

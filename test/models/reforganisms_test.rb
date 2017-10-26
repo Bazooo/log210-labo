@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class OrganismeTest < ActiveSupport::TestCase
+class RefOrganismTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

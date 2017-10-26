@@ -1,0 +1,52 @@
+<h2> Referents Organisms <%= link_to '<span class="glyphicon glyphicon glyphicon-plus"></span>'.html_safe, new_reforganism_path() %> </h2>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Web Site</th>
+        <th>Civic Number</th>
+        <th>Street</th>
+        <th>city</th>
+        <th>Province</th>
+        <th>Postcode</th>
+        <th>Work</th>
+        <th>Fax</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @organismes.each do |organisme| %>
+      <tr>
+        <td>
+            <% if organisme.active == true %>
+                <span class="glyphicon glyphicon-record">
+            <% end %>
+        </td>
+        <td><%= organisme.name %></td>
+        <td><%= organisme.email %></td>
+        <td><%= organisme.website %></td>
+        <td><%= organisme.adresse.civic_number %></td>
+        <td><%= organisme.adresse.street %></td>
+        <td><%= organisme.adresse.city %></td>
+        <td><%= organisme.adresse.province %></td>
+        <td><%= organisme.adresse.postcode %></td>
+        <td><%= organisme.telephone.work %></td>
+        <td><%= organisme.telephone.fax %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, reforganism_path(organisme) %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_reforganism_path(organisme) %></td>
+
+        <td>
+            <% if organisme.active == true %>
+                <%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, reforganism_path(organisme),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+
+</table>
