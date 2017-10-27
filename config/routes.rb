@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   post 'create_user' => 'users#create', as: :create_user
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :reforganisms
-  resources :adresses
+  resources :addresses
   resources :telephones
 end

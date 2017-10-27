@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026202948) do
+ActiveRecord::Schema.define(version: 20171027125815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20171026202948) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "adresses", force: :cascade do |t|
+  create_table "addresses", force: :cascade do |t|
     t.string "civic_number"
     t.string "street"
     t.string "city"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171026202948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "reforganism_id"
-    t.index ["reforganism_id"], name: "index_adresses_on_reforganism_id"
+    t.index ["reforganism_id"], name: "index_addresses_on_reforganism_id"
   end
 
   create_table "reforganisms", force: :cascade do |t|

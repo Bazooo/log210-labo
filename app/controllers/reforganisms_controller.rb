@@ -1,7 +1,7 @@
 class ReforganismsController < ApplicationController
     def new
         @organisme = Reforganism.new
-        @organisme.build_adresse
+        @organisme.build_address
         @organisme.build_telephone
     end
 
@@ -45,7 +45,7 @@ class ReforganismsController < ApplicationController
     end
 private
   def organisme_params
-    params.require(:reforganism).permit(:name, :email, :website, adresse_attributes: [:id, :civic_number, :street, :city, :province, :postcode],
+    params.require(:reforganism).permit(:name, :email, :website, address_attributes: [:id, :civic_number, :street, :city, :province, :postcode],
      telephone_attributes: [:id, :work, :fax])
   end
 end
