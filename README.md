@@ -31,3 +31,7 @@ Ensuite utiliser la commande docker exec pour lancer un terminal bash
 ```
 docker exec -it <container id> bash
 ```
+Reset la db dehors de l'exécution
+```
+docker-compose run web rails db:reset
+```

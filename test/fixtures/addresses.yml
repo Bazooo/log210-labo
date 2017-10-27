@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  civic_number: 28
+  street: Sesame Street
+  city: Montreal
+  province: Quebec
+  postcode: H46 2T3
+  created_at: 2017-10-20 00:51:05.973703
+  updated_at: 2017-10-20 00:51:05.973703
+
+two:
+  civic_number: 31
+  street: University
+  city: Montreal
+  province: Quebec
+  postcode: H2R 2Y4
+  created_at: 2017-10-20 00:51:05.973703
+  updated_at: 2017-10-20 00:51:05.973703

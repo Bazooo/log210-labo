@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: lesfourganismes
+  email: lesfourganismes@email.com
+  website: lesfourganismes.com
+  created_at: 2017-10-20 00:51:05.973703
+  updated_at: 2017-10-20 00:51:05.973703
+  active: true
+
+two:
+  name: lesfourganismesCA
+  email: lesfourganismesCA@email.com
+  website: lesfourganismesCA.com
+  created_at: 2017-10-20 00:51:05.973703
+  updated_at: 2017-10-20 00:51:05.973703
+  active: true

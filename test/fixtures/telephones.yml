@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  work: 555-777-9999
+  fax: 555-777-9988
+  created_at: 2017-10-20 00:51:05.973703
+  updated_at: 2017-10-20 00:51:05.973703
+
+two:
+  work: 555-555-9999
+  fax: 555-555-9988
+  created_at: 2017-10-20 00:51:05.973703
+  updated_at: 2017-10-20 00:51:05.973703
