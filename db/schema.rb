@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027125815) do
+ActiveRecord::Schema.define(version: 20171027171203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "account_logs", force: :cascade do |t|
-    t.string "username"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "civic_number"
@@ -32,6 +25,16 @@ ActiveRecord::Schema.define(version: 20171027125815) do
     t.datetime "updated_at", null: false
     t.bigint "reforganism_id"
     t.index ["reforganism_id"], name: "index_addresses_on_reforganism_id"
+  end
+
+  create_table "organisms", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.string "fax"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_organisms_on_user_id"
   end
 
   create_table "reforganisms", force: :cascade do |t|

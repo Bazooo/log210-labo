@@ -1,4 +1,6 @@
 class ReforganismsController < ApplicationController
+    before_action :coordonateur_and_up
+
     def new
         @organisme = Reforganism.new
         @organisme.build_address
@@ -47,5 +49,11 @@ private
   def organisme_params
     params.require(:reforganism).permit(:name, :email, :website, address_attributes: [:id, :civic_number, :street, :city, :province, :postcode],
      telephone_attributes: [:id, :work, :fax])
+  end
+
+  def coordonateur_and_up
+    if current_user.assistant?
+      redirect_to root_path, :alert => "Access denied"
+    end
   end
 end
