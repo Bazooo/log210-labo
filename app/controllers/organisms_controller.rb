@@ -17,11 +17,13 @@ class OrganismsController < ApplicationController
     end
 
     def show
+        @servicepoint = Servicepoint.new
         @organisme = Organism.find(params[:id])
     end
 
     def edit #edit fields
         @organisme = Organism.find(params[:id])
+        @servicepoints = Servicepoint.all
     end
 
     def update #update instance
@@ -46,7 +48,6 @@ class OrganismsController < ApplicationController
 
 
     private
-
     def director_only
         unless current_user.directeur?
             redirect_to root_path, :alert => "Access denied."
