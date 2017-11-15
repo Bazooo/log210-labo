@@ -1,1 +1,11 @@
-<%= render 'organisms/form' %>
+<% if @organisme.errors.any? %>
+    <div id="error_explanation">
+          <ul style="list-style-type:none">
+            <% @organisme.errors.full_messages.each do |msg| %>
+              <li><%= react_component('Alert', {text: msg}) %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+<%= react_component('Alert', {text: alert}) %>
+<%= react_component("OrganismCreateForm", {token: form_authenticity_token}) %>

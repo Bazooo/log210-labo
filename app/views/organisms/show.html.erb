@@ -1,3 +1,12 @@
+<% if @servicepoint.errors.any? %>
+    <div id="error_explanation">
+          <ul style="list-style-type:none">
+            <% @servicepoint.errors.full_messages.each do |msg| %>
+              <li><%= react_component('Alert', {text: msg}) %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
 <h2><%= @organisme.name %></h2>
 <div class="row">
   <div class="col-sm-4">
@@ -13,4 +22,52 @@
     </p>
   </div>
 </div>
-<%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, organisms_path() %>
+<div class="row">
+  <div class="col-sm-4">
+    <h2>Service Points</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Fax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @organisme.servicepoints.each do |service| %>
+        <tr>
+          <td><%= service.name %></td>
+          <td><%= service.address %></td>
+          <td><%= service.phone %></td>
+          <td><%= service.email %></td>
+          <td><%= service.fax %></td>
+          <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, servicepoint_path(service) %>
+            <%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_servicepoint_path(service) %>
+            <%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, servicepoint_path(service),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+        <% end %>
+
+        <%= form_for @servicepoint do |form| %>
+        <tr>
+          <td><%= form.text_field :name %></td>
+          <td><%= form.text_field :address %></td>
+          <td><%= form.text_field :phone %></td>
+          <td><%= form.text_field :email %></td>
+          <td><%= form.text_field :fax %></td>
+          <%= form.hidden_field :organism_id, :value => @organisme.id %>
+          <td><%= form.submit %></td>
+        </tr>
+
+        <!--<%= react_component("ServicePointCreateForm", {token: form_authenticity_token}) %> not used utils further notice-->
+        <% end %>
+      </tbody>
+    </div>
+  </div>
+  <div class="row">
+    <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, organisms_path() %>
+  </div>

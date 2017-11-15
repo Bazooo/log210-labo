@@ -1,4 +1,4 @@
-<h2> Referents Organisms <%= link_to '<span class="glyphicon glyphicon glyphicon-plus"></span>'.html_safe, new_organism_path() %> </h2>
+<h2>Organisms <%= link_to '<span class="glyphicon glyphicon glyphicon-plus"></span>'.html_safe, new_organism_path() %> </h2>
 <table class="table table-striped">
     <thead>
       <tr>
@@ -10,22 +10,22 @@
     </thead>
     <tbody>
     <% @organismes.each do |organisme| %>
-      <tr>
-        <td><%= organisme.name %></td>
-        <td><%= organisme.address %></td>
-        <td><%= organisme.email %></td>
-        <td><%= organisme.fax %></td>
-        <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, organism_path(organisme) %></td>
-        <td><%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_organism_path(organisme) %></td>
-        <td>
-            <%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, organism_path(organisme),
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %>
-        </td>
-      </tr>
+      <% if organisme.user_id == current_user.id %>
+          <tr>
+            <td><%= organisme.name %></td>
+            <td><%= organisme.address %></td>
+            <td><%= organisme.email %></td>
+            <td><%= organisme.fax %></td>
+            <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, organism_path(organisme) %></td>
+            <td><%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_organism_path(organisme) %></td>
+            <td>
+                <%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, organism_path(organisme),
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+      <% end %>
     <% end %>
     </tbody>
   </table>
-
-
 </table>
