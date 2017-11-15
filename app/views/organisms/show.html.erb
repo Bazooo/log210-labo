@@ -62,6 +62,8 @@
           <%= form.hidden_field :organism_id, :value => @organisme.id %>
           <td><%= form.submit %></td>
         </tr>
+
+        <!--<%= react_component("ServicePointCreateForm", {token: form_authenticity_token}) %> not used utils further notice-->
         <% end %>
       </tbody>
     </div>

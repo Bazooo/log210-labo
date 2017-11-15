@@ -1,6 +1,6 @@
-class OrganismInput extends React.Component {
+class ServicePointInput extends React.Component {
     getData(name) {
-        const modelName = 'organism';
+        const modelName = 'servicepoint';
         return ({
             id: modelName + "_" + name,
             name: modelName + "["+ name +"]",
@@ -15,8 +15,7 @@ class OrganismInput extends React.Component {
         );
     }
 }
-
-class OrganismInputName extends OrganismInput {
+class ServicePointInputName extends ServicePointInput {
     constructor(props) {
         super(props);
         this.name = props.name;
@@ -33,7 +32,7 @@ class OrganismInputName extends OrganismInput {
     }
 }
 
-class OrganismInputAddress extends OrganismInput{
+class ServicePointInputAddress extends ServicePointInput{
     constructor(props) {
         super(props);
         this.address = props.address;
@@ -51,7 +50,7 @@ class OrganismInputAddress extends OrganismInput{
     }
 }
 
-class OrganismInputPhone extends OrganismInput{
+class ServicePointInputPhone extends ServicePointInput{
     constructor(props) {
         super(props);
         this.phone = props.phone;
@@ -69,7 +68,7 @@ class OrganismInputPhone extends OrganismInput{
     }
 }
 
-class OrganismInputEmail extends OrganismInput{
+class ServicePointInputEmail extends ServicePointInput{
     constructor(props) {
         super(props);
         this.email = props.email;
@@ -87,7 +86,7 @@ class OrganismInputEmail extends OrganismInput{
     }
 }
 
-class OrganismInputFax extends OrganismInput{
+class ServicePointInputFax extends ServicePointInput{
     constructor(props) {
         super(props);
         this.fax = props.fax;
@@ -105,19 +104,92 @@ class OrganismInputFax extends OrganismInput{
     }
 }
 
+class ServicePointCreateInputName extends ServicePointInput {
+    constructor(props) {
+        super(props);
+        this.name = props.name;
+    }
+    render() {
+        const data = this.getData("name");
+        let content = (
+                <input type="text" className="form-control" id={data.id} name={data.name}/>
+        );
+        return content;
+    }
+}
 
-class OrganismButtonUpdate extends React.Component {
+class ServicePointCreateInputAddress extends ServicePointInput{
+    constructor(props) {
+        super(props);
+        this.address = props.address;
+    }
+    render() {
+        const data = this.getData("address");
+        let content = (
+                <input type="text"  className="form-control" id={data.id} name={data.name}/>
+        );
+
+        return content;
+    }
+}
+
+class ServicePointCreateInputPhone extends ServicePointInput{
+    constructor(props) {
+        super(props);
+        this.phone = props.phone;
+    }
+    render() {
+        const data = this.getData("phone");
+        let content = (
+                <input type="text"  className="form-control" id={data.id} name={data.name}/>
+        );
+
+        return content;
+    }
+}
+
+class ServicePointCreateInputEmail extends ServicePointInput{
+    constructor(props) {
+        super(props);
+        this.email = props.email;
+    }
+    render() {
+        const data = this.getData("email");
+        let content = (
+                <input type="text"  className="form-control" id={data.id} name={data.name}/>
+        );
+
+        return content;
+    }
+}
+
+class ServicePointCreateInputFax extends ServicePointInput{
+    constructor(props) {
+        super(props);
+        this.fax = props.fax;
+    }
+    render() {
+        const data = this.getData("fax");
+        let content = (
+                <input type="text"  className="form-control" id={data.id} name={data.name} />
+        );
+
+        return content;
+    }
+}
+
+class ServicePointButtonUpdate extends React.Component {
     render() {
         return(
-            <button type="submit" className="btn btn-primary" name="commit" data-disable-with="Update Organism">Update organism</button>
+            <button type="submit" className="btn btn-primary" name="commit" data-disable-with="Update ServicePoint">Update Service Point</button>
         );
     }
 }
 
-class OrganismButtonCreate extends React.Component {
+class ServicePointButtonCreate extends React.Component {
     render() {
         return(
-            <button type="submit" className="btn btn-primary" name="commit" data-disable-with="Create Organism">Create organism</button>
+            <button type="submit" className="btn btn-primary" name="commit" data-disable-with="Create ServicePoint">Create Service Point</button>
         );
     }
 }

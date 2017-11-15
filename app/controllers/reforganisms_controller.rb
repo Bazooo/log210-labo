@@ -24,6 +24,8 @@ class ReforganismsController < ApplicationController
 
     def edit #edit fields
         @organisme = Reforganism.find(params[:id])
+        @address = @organisme.address
+        @telephone = @organisme.telephone
     end
 
     def update #update instance
@@ -39,7 +41,7 @@ class ReforganismsController < ApplicationController
     def destroy #delete instance
         @organisme = Reforganism.find(params[:id])
         @organisme.update_attribute(:active, false)
-        redirect_to reforganims_path
+        redirect_to reforganisms_path
     end
 
     def index #list all

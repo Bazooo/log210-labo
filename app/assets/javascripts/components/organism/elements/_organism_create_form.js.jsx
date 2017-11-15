@@ -1,6 +1,7 @@
 class OrganismCreateForm extends React.Component {
+
     render() {
-        const action = '/organisms/new';
+        const action = '/organisms';
         let content = (
             <div>
                 <OrganismInputName />
