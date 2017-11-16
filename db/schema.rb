@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027125815) do
+ActiveRecord::Schema.define(version: 20171116004959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "account_logs", force: :cascade do |t|
-    t.string "username"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "civic_number"
@@ -32,6 +25,16 @@ ActiveRecord::Schema.define(version: 20171027125815) do
     t.datetime "updated_at", null: false
     t.bigint "reforganism_id"
     t.index ["reforganism_id"], name: "index_addresses_on_reforganism_id"
+  end
+
+  create_table "diplomas", force: :cascade do |t|
+    t.string "program_name"
+    t.string "institution_name"
+    t.string "address"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reforganisms", force: :cascade do |t|
@@ -50,6 +53,27 @@ ActiveRecord::Schema.define(version: 20171027125815) do
     t.datetime "updated_at", null: false
     t.bigint "reforganism_id"
     t.index ["reforganism_id"], name: "index_telephones_on_reforganism_id"
+  end
+
+  create_table "user_phones", force: :cascade do |t|
+    t.string "cell_number"
+    t.string "home_number"
+    t.string "work_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "organism_role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "diploma_id"
+    t.bigint "user_phone_id"
+    t.index ["diploma_id"], name: "index_user_profiles_on_diploma_id"
+    t.index ["user_phone_id"], name: "index_user_profiles_on_user_phone_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -73,8 +97,13 @@ ActiveRecord::Schema.define(version: 20171027125815) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
+    t.bigint "user_profile_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["user_profile_id"], name: "index_users_on_user_profile_id"
   end
 
+  add_foreign_key "user_profiles", "diplomas"
+  add_foreign_key "user_profiles", "user_phones"
+  add_foreign_key "users", "user_profiles"
 end

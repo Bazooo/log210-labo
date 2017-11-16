@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'user_profiles/new'
+
   get 'launcher/index'
   root 'launcher#index'
   devise_for :users, controllers: { registrations: "registrations"}, :path_prefix => 'my'

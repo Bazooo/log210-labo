@@ -3,3 +3,13 @@
 <% if current_user.role == "directeur" || current_user.role == "coordonateur" %>
     <%= react_component('LandingCreateUserForm', {token: form_authenticity_token, userRole: current_user.role, roles: User.roles.keys}) %>
 <% end %>
+<!-- 
+<%= form_for @user do |f| %>
+   <%= f.fields_for :user_profiles do |user_profile| %>
+       <%= user_profile.text_field :first_name %>
+       <%= user_profile.fields_for :diplomas do |diploma| %>
+           <%= diploma.text_field :address %>
+       <% end %>
+   <% end %>
+   <%= f.submit %>
+<% end %> -->

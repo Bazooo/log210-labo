@@ -15,14 +15,17 @@ class UsersController < ApplicationController
   #   end
   # end
   #
-  # def new
-  #   @user = User.new
-  # end
+  def new
+    @user = User.new
+    @user_profile = @user.user_profiles.build
+    @user_profile.user_phones.build
+    @user_profile.diplomas.build
+  end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, :notice => "User Created."
+      redirect_to root_path, :notice => user_params
     else
       redirect_to root_path, :alert => "Failed to create user."
     end
@@ -60,6 +63,13 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :role)
+    params.require(:user).permit(:email, :password, :role, user_profiles_attributes:
+      [:first_name, :last_name, :address, :organism_role,
+        user_phones_attributes: [:cell_number, :home_number, :work_number],
+        diplomas_attributes: [:program_name, :institution_name, :address, :date_start, :date_end]
+      ])
+
+    # params.require(:reforganism).permit(:name, :email, :website, address_attributes: [:id, :civic_number, :street, :city, :province, :postcode],
+    #    telephone_attributes: [:id, :work, :fax])
   end
 end

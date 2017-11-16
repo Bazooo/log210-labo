@@ -8,6 +8,7 @@ class DeviseCreateUserForm extends React.Component {
                 <DeviseInputEmail />
                 <DeviseInputPassword />
                 <DeviseInputRole roles={roles} />
+                <UserProfileCreateUserForm />
                 <DeviseButtonCreate />
             </div>
         );

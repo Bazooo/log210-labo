@@ -8,4 +8,6 @@ class User < ApplicationRecord
          :confirmable, :lockable
 
   has_one :user_profile
+
+  accepts_nested_attributes_for :user_profile
 end
