@@ -9,5 +9,5 @@ class User < ApplicationRecord
 
   has_one :user_profile
 
-  accepts_nested_attributes_for :user_profile
+  accepts_nested_attributes_for :user_profile, :allow_destroy => true
 end

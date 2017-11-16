@@ -7,7 +7,7 @@ class ReforganismsController < ApplicationController
 
     def create
         @organisme = Reforganism.new(organisme_params)
-        /render plain: params[:article].inspect/
+        # /render plain: params[:article].inspect/
 
         if @organisme.save
             redirect_to @organisme

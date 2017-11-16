@@ -1,4 +1,23 @@
 class DiplomaCreateUserForm extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            cards: [],
+            cardIndex: 0,
+        };
+    }
+
+    addDiploma() {
+        this.setState((prevState) => {
+            let newCards = prevState.cards;
+            let cardIndex = newCards.push(<DiplomaCreateUserFormCard index={prevState.cardIndex} />);
+            return {
+                cards: newCards,
+                cardIndex: cardIndex,
+            };
+        });
+    }
+
     render() {
         return (
             <div className="panel panel-info">
@@ -6,11 +25,24 @@ class DiplomaCreateUserForm extends React.Component {
                     <h3 className="panel-title">Formations</h3>
                 </div>
                 <div className="panel-body">
-                    <DiplomaInputString name="program_name" title="Nom du programme" />
-                    <DiplomaInputString name="institution_name" title="Nom de l'institution" />
-                    <DiplomaInputString name="address" title="Adresse de l'institution" />
-                    <DiplomaInputString name="date_start" title="Date début (AA-MM-JJ)" />
-                    <DiplomaInputString name="date_end" title="Date fin (AA-MM-JJ)" />
+                    {this.state.cards}
+                    <button type="button" className="btn btn-info" onClick={this.addDiploma.bind(this)}>Add</button>
+                </div>
+            </div>
+        );
+    }
+}
+
+class DiplomaCreateUserFormCard extends React.Component {
+    render() {
+        return (
+            <div className="panel panel-default">
+                <div className="panel-body">
+                    <DiplomaInputString index={this.props.index} name="program_name" title="Nom du programme" />
+                    <DiplomaInputString index={this.props.index} name="institution_name" title="Nom de l'institution" />
+                    <DiplomaInputString index={this.props.index} name="address" title="Adresse de l'institution" />
+                    <DiplomaInputString index={this.props.index} name="date_start" title="Date début (AAAA-MM-JJ)" />
+                    <DiplomaInputString index={this.props.index} name="date_end" title="Date fin (AAAA-MM-JJ)" />
                 </div>
             </div>
         );

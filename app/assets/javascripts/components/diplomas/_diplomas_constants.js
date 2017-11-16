@@ -1,6 +1,6 @@
 class DiplomaConstants {
     constructor() {
-        this._modelName = "user[user_profiles][diplomas]";
+        this._modelName = "user[user_profile_attributes][diploma_attributes]";
         this._actions = {
         };
     }

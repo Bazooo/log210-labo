@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116004959) do
+ActiveRecord::Schema.define(version: 20171116142815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20171116004959) do
     t.datetime "date_end"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_profile_id"
+    t.index ["user_profile_id"], name: "index_diplomas_on_user_profile_id"
   end
 
   create_table "reforganisms", force: :cascade do |t|
@@ -61,6 +63,8 @@ ActiveRecord::Schema.define(version: 20171116004959) do
     t.string "work_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_profile_id"
+    t.index ["user_profile_id"], name: "index_user_phones_on_user_profile_id"
   end
 
   create_table "user_profiles", force: :cascade do |t|
@@ -70,10 +74,8 @@ ActiveRecord::Schema.define(version: 20171116004959) do
     t.string "organism_role"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "diploma_id"
-    t.bigint "user_phone_id"
-    t.index ["diploma_id"], name: "index_user_profiles_on_diploma_id"
-    t.index ["user_phone_id"], name: "index_user_profiles_on_user_phone_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,13 +99,11 @@ ActiveRecord::Schema.define(version: 20171116004959) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role"
-    t.bigint "user_profile_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["user_profile_id"], name: "index_users_on_user_profile_id"
   end
 
-  add_foreign_key "user_profiles", "diplomas"
-  add_foreign_key "user_profiles", "user_phones"
-  add_foreign_key "users", "user_profiles"
+  add_foreign_key "diplomas", "user_profiles"
+  add_foreign_key "user_phones", "user_profiles"
+  add_foreign_key "user_profiles", "users"
 end

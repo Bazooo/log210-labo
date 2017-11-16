@@ -3,7 +3,7 @@ class DiplomaInput extends React.Component {
         const modelName = _diploma_constants.getModelName();
         return ({
             id: modelName + "_" + name,
-            name: modelName + "["+ name +"]",
+            name: modelName + "[" + this.props.index + "]["+ name +"]",
         });
     }
     render(content) {

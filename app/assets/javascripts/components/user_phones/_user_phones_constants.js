@@ -1,6 +1,6 @@
 class UserPhoneConstants {
     constructor() {
-        this._modelName = "user[user_profiles][user_phones]";
+        this._modelName = "user[user_profile_attributes][user_phone_attributes]";
         this._actions = {
         };
     }

@@ -1,6 +1,6 @@
 class UserProfileConstants {
     constructor() {
-        this._modelName = "user[user_profiles]";
+        this._modelName = "user[user_profile_attributes]";
         this._actions = {
         };
     }
