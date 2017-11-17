@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :referents
   put 'user_profiles/update'
 
   get 'user_profiles/edit'
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
   resources :reforganisms
   resources :addresses
   resources :telephones
+  resources :referent_searches
   resources :organisms
   resources :servicepoints
 end

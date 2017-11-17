@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Referents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Family Name</th>
+      <th>Surname</th>
+      <th>Title</th>
+      <th>Telephone</th>
+      <th>Cellphone</th>
+      <th>Fax</th>
+      <th>Email</th>
+      <th>Preference</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @referents.each do |referent| %>
+      <tr>
+        <td><%= referent.familyName %></td>
+        <td><%= referent.surname %></td>
+        <td><%= referent.title %></td>
+        <td><%= referent.telephone %></td>
+        <td><%= referent.cellphone %></td>
+        <td><%= referent.fax %></td>
+        <td><%= referent.email %></td>
+        <td><%= referent.preference %></td>
+        <td><%= link_to 'Show', referent %></td>
+        <td><%= link_to 'Edit', edit_referent_path(referent) %></td>
+        <td><%= link_to 'Destroy', referent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<p><%= link_to "Search Referent", new_referent_search_path %></p>
+<%= link_to 'New Referent', new_referent_path %>

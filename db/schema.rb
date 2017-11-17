@@ -27,6 +27,35 @@ ActiveRecord::Schema.define(version: 20171116142815) do
     t.index ["reforganism_id"], name: "index_addresses_on_reforganism_id"
   end
 
+  create_table "referent_searches", force: :cascade do |t|
+    t.string "familyname"
+    t.string "surname"
+    t.string "nameRefOrganism"
+    t.string "title"
+    t.string "telephone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "referents", force: :cascade do |t|
+    t.string "familyName"
+    t.string "surname"
+    t.string "title"
+    t.string "telephone"
+    t.string "cellphone"
+    t.string "fax"
+    t.string "email"
+    t.integer "preference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "referents_reforganisms", id: false, force: :cascade do |t|
+    t.bigint "referent_id", null: false
+    t.bigint "reforganism_id", null: false
+    t.index ["referent_id", "reforganism_id"], name: "index_referents_reforganisms_on_referent_id_and_reforganism_id"
+  end
+
   create_table "diplomas", force: :cascade do |t|
     t.string "program_name"
     t.string "institution_name"

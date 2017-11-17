@@ -1,0 +1,32 @@
+<h1>Search Results</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Family Name</th>
+    <th>Surname</th>
+    <th>Title</th>
+    <th>Telephone</th>
+    <th>Cellphone</th>
+    <th>Fax</th>
+    <th>Email</th>
+    <th>Preference</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @referentSearch.referents.each do |referent| %>
+      <tr>
+        <td><%= referent.familyName %></td>
+        <td><%= referent.surname %></td>
+        <td><%= referent.title %></td>
+        <td><%= referent.telephone %></td>
+        <td><%= referent.cellphone %></td>
+        <td><%= referent.fax %></td>
+        <td><%= referent.email %></td>
+        <td><%= referent.preference %></td>
+        <td><%= link_to 'Show', referent %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

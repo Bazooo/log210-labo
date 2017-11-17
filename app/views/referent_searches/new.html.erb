@@ -1,0 +1,14 @@
+<h1>Advanced Search</h1>
+
+<%= form_for @referentSearch do |f| %>
+    <div class="field">
+      <%= f.label :familyname %><br />
+      <%= f.text_field :familyname %>
+    </div>
+    <div class="field">
+      <%= f.label :surname %><br />
+      <%= f.text_field :surname %>
+    </div>
+    <div class="actions"><%= f.submit "Search Referent" %></div>
+<% end %>
+

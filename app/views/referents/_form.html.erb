@@ -1,0 +1,58 @@
+<%= form_with(model: referent, local: true) do |form| %>
+  <% if referent.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(referent.errors.count, "error") %> prohibited this referent from being saved:</h2>
+
+      <ul>
+      <% referent.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :familyName %>
+    <%= form.text_field :familyName, id: :referent_familyName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname %>
+    <%= form.text_field :surname, id: :referent_surname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :referent_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone, id: :referent_telephone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cellphone %>
+    <%= form.text_field :cellphone, id: :referent_cellphone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fax %>
+    <%= form.text_field :fax, id: :referent_fax %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :referent_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preference %>
+    <%= form.number_field :preference, id: :referent_preference %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
