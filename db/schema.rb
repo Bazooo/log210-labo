@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20171116142815) do
     t.index ["user_profile_id"], name: "index_diplomas_on_user_profile_id"
   end
 
+  create_table "organisms", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.string "fax"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_organisms_on_user_id"
+  end
+
   create_table "reforganisms", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -46,6 +56,16 @@ ActiveRecord::Schema.define(version: 20171116142815) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
+  end
+
+  create_table "servicepoints", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.string "fax"
+    t.bigint "organism_id"
+    t.index ["organism_id"], name: "index_servicepoints_on_organism_id"
   end
 
   create_table "telephones", force: :cascade do |t|

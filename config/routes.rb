@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :reforganisms
   resources :addresses
   resources :telephones
+  resources :organisms
+  resources :servicepoints
 end

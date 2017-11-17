@@ -8,9 +8,4 @@
     </div>
 <% end %>
 <%= react_component('Alert', {text: alert}) %>
-<%= react_component("ReforganismCreateForm", {token: form_authenticity_token}) %>
-
-<!--<%= render 'reforganisms/form' %>-->
-<div class="row">
-    <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, reforganisms_path() %>
-</div>
+<%= react_component("OrganismCreateForm", {token: form_authenticity_token}) %>
