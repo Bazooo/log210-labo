@@ -1,7 +1,7 @@
 class UserProfile < ApplicationRecord
     belongs_to :user
-    has_one :user_phone
-    has_many :diploma
+    has_one :user_phone, :dependent => :destroy
+    has_many :diploma, :dependent => :destroy
 
     accepts_nested_attributes_for :user_phone, :allow_destroy => true
     accepts_nested_attributes_for :diploma, :allow_destroy => true

@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable
 
-  has_one :user_profile
+  has_one :user_profile, :dependent => :destroy
 
   accepts_nested_attributes_for :user_profile, :allow_destroy => true
 end

@@ -1,6 +1,6 @@
 class DiplomaInput extends React.Component {
-    getData(name) {
-        const modelName = _diploma_constants.getModelName();
+    getData(name, model) {
+        const modelName = _diploma_constants.getModelName(model);
         return ({
             id: modelName + "_" + name,
             name: modelName + "[" + this.props.index + "]["+ name +"]",
@@ -17,11 +17,11 @@ class DiplomaInput extends React.Component {
 
 class DiplomaInputString extends DiplomaInput {
     render() {
-        const data = this.getData(this.props.name);
+        const data = this.getData(this.props.name, this.props.model);
         let content = (
             <div>
                 <label htmlFor={data.id}>{this.props.title}</label>
-                <input type="text" className="form-control" id={data.id} name={data.name} />
+                <input type="text" defaultValue={this.props.val} className="form-control" id={data.id} name={data.name} />
             </div>
         );
 

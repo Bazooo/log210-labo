@@ -1,12 +1,15 @@
 class DiplomaConstants {
     constructor() {
-        this._modelName = "user[user_profile_attributes][diploma_attributes]";
         this._actions = {
         };
     }
 
-    getModelName() {
-        return this._modelName.slice(0);
+    getModelName(model) {
+        let modelName = model[0];
+        for(let i = 1; i < model.length; i++) {
+            modelName += "["+ model[i] +"_attributes]";
+        }
+        return modelName;
     }
 
     getActions() {

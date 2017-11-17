@@ -25,11 +25,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, :notice => user_params
+      redirect_to root_path, :notice => "User created"
     else
       redirect_to root_path, :alert => "Failed to create user."
     end
-
   end
 
   # def update

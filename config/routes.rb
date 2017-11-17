@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  put 'user_profiles/update'
+
+  get 'user_profiles/edit'
+
   get 'user_profiles/new'
 
   get 'launcher/index'
