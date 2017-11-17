@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :referents
   get 'launcher/index'
   root 'launcher#index'
   devise_for :users, controllers: { registrations: "registrations"}, :path_prefix => 'my'
@@ -9,4 +10,5 @@ Rails.application.routes.draw do
   resources :reforganisms
   resources :addresses
   resources :telephones
+  resources :referent_searches
 end
