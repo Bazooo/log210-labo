@@ -4,7 +4,10 @@ class ReferentsController < ApplicationController
   # GET /referents
   # GET /referents.json
   def index
-    @referents = Referent.all
+    @reforganism = Reforganism.find(params[:id])
+    @referents = @reforganism.referents
+    #@referent = @reforganism.referents
+    #@referents = Referent.includes(:reforganisms_referents).where(['reforganisms_referents.id = ?', params[:id]])
   end
 
   # GET /referents/1
@@ -15,6 +18,8 @@ class ReferentsController < ApplicationController
   # GET /referents/new
   def new
     @referent = Referent.new
+    @reforganism = Reforganism.find(params[:id])
+    @referent.reforganisms << @reforganism
   end
 
   # GET /referents/1/edit
@@ -27,6 +32,7 @@ class ReferentsController < ApplicationController
     @referent = Referent.new(referent_params)
     respond_to do |format|
       if @referent.save
+        @reforganism = @referent.reforganisms.last
         format.html { redirect_to @referent, notice: 'Referent was successfully created.' }
         format.json { render :show, status: :created, location: @referent }
       else
