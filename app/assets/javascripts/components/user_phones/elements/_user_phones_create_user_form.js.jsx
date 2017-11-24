@@ -7,9 +7,9 @@ class UserPhoneCreateUserForm extends React.Component {
                     <h3 className="panel-title">Numéros de téléphone</h3>
                 </div>
                 <div className="panel-body">
-                    <UserPhoneInputString model={models} name="cell_number" title="Cellulaire" />
-                    <UserPhoneInputString model={models} name="home_number" title="Maison" />
-                    <UserPhoneInputString model={models} name="work_number" title="Travail" />
+                    <RestInputString model={models} name="cell_number" title="Cellulaire" />
+                    <RestInputString model={models} name="home_number" title="Maison" />
+                    <RestInputString model={models} name="work_number" title="Travail" />
                 </div>
             </div>
         );

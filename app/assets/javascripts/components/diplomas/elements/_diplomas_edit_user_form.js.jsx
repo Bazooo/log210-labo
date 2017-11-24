@@ -44,11 +44,11 @@ class DiplomaEditUserFormCard extends React.Component {
         return (
             <div className="panel panel-default">
                 <div className="panel-body">
-                    <DiplomaInputString model={models} val={this.props.diploma.program_name} index={this.props.index} name="program_name" title="Nom du programme" />
-                    <DiplomaInputString model={models} val={this.props.diploma.institution_name} index={this.props.index} name="institution_name" title="Nom de l'institution" />
-                    <DiplomaInputString model={models} val={this.props.diploma.address} index={this.props.index} name="address" title="Adresse de l'institution" />
-                    <DiplomaInputString model={models} val={this.props.diploma.date_start} index={this.props.index} name="date_start" title="Date début (AAAA-MM-JJ)" />
-                    <DiplomaInputString model={models} val={this.props.diploma.date_end} index={this.props.index} name="date_end" title="Date fin (AAAA-MM-JJ)" />
+                    <RestInputString model={models} val={this.props.diploma.program_name} index={this.props.index} name="program_name" title="Nom du programme" />
+                    <RestInputString model={models} val={this.props.diploma.institution_name} index={this.props.index} name="institution_name" title="Nom de l'institution" />
+                    <RestInputString model={models} val={this.props.diploma.address} index={this.props.index} name="address" title="Adresse de l'institution" />
+                    <RestInputString model={models} val={this.props.diploma.date_start} index={this.props.index} name="date_start" title="Date début (AAAA-MM-JJ)" />
+                    <RestInputString model={models} val={this.props.diploma.date_end} index={this.props.index} name="date_end" title="Date fin (AAAA-MM-JJ)" />
                 </div>
             </div>
         );
