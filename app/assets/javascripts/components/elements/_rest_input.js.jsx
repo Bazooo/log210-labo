@@ -48,3 +48,11 @@ class RestInputButton extends React.Component {
         );
     };
 }
+
+class RestHiddenInput extends React.Component {
+    render () {
+        return (
+            <input type="hidden" value={this.props.val} name={this.props.name} />
+        );
+    }
+}
