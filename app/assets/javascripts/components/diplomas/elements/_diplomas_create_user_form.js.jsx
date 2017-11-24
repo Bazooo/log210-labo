@@ -39,11 +39,11 @@ class DiplomaCreateUserFormCard extends React.Component {
         return (
             <div className="panel panel-default">
                 <div className="panel-body">
-                    <DiplomaInputString model={models} index={this.props.index} name="program_name" title="Nom du programme" />
-                    <DiplomaInputString model={models} index={this.props.index} name="institution_name" title="Nom de l'institution" />
-                    <DiplomaInputString model={models} index={this.props.index} name="address" title="Adresse de l'institution" />
-                    <DiplomaInputString model={models} index={this.props.index} name="date_start" title="Date début (AAAA-MM-JJ)" />
-                    <DiplomaInputString model={models} index={this.props.index} name="date_end" title="Date fin (AAAA-MM-JJ)" />
+                    <RestInputString model={models} index={this.props.index} name="program_name" title="Nom du programme" />
+                    <RestInputString model={models} index={this.props.index} name="institution_name" title="Nom de l'institution" />
+                    <RestInputString model={models} index={this.props.index} name="address" title="Adresse de l'institution" />
+                    <RestInputString model={models} index={this.props.index} name="date_start" title="Date début (AAAA-MM-JJ)" />
+                    <RestInputString model={models} index={this.props.index} name="date_end" title="Date fin (AAAA-MM-JJ)" />
                 </div>
             </div>
         );
