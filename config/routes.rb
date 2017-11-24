@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :referents
+  put 'user_profiles/update'
+
+  get 'user_profiles/edit'
+
+  get 'user_profiles/new'
+
   get 'launcher/index'
   root 'launcher#index'
   devise_for :users, controllers: { registrations: "registrations"}, :path_prefix => 'my'
@@ -9,4 +16,7 @@ Rails.application.routes.draw do
   resources :reforganisms
   resources :addresses
   resources :telephones
+  resources :referent_searches
+  resources :organisms
+  resources :servicepoints
 end

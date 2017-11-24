@@ -1,0 +1,35 @@
+<% if @service_point.errors.any? %>
+    <div id="error_explanation">
+          <ul style="list-style-type:none">
+            <% @service_point.errors.full_messages.each do |msg| %>
+              <li><%= react_component('Alert', {text: msg}) %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+<%= react_component('Alert', {text: alert}) %>
+<%= form_for @service_point do |form| %>
+    <h2>Service Point</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <%= form.label :name %><br>
+            <%= form.text_field :name %><br>
+
+            <%= form.label :address %><br>
+            <%= form.text_field :address %><br>
+
+            <%= form.label :phone %><br>
+            <%= form.text_field :phone %><br>
+
+            <%= form.label :email %><br>
+            <%= form.text_field :email %><br>
+
+            <%= form.label :fax %><br>
+            <%= form.text_field :fax %>
+        </div>
+    </div>
+    <div class="row">
+        <%= form.submit %>
+    </div>
+    <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, organism_path(@organism) %>
+<% end %>

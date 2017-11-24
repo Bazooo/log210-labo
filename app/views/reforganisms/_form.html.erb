@@ -1,60 +1,56 @@
-<% if current_user.role == "coordonateur" %>
-    <% if @organisme.errors.any? %>
-        <div id="error_explanation">
-              <ul style="list-style-type:none">
-                <% @organisme.errors.full_messages.each do |msg| %>
-                  <li><%= react_component('Alert', {text: msg}) %></li>
-                <% end %>
-            </ul>
+<% if @organisme.errors.any? %>
+    <div id="error_explanation">
+          <ul style="list-style-type:none">
+            <% @organisme.errors.full_messages.each do |msg| %>
+              <li><%= react_component('Alert', {text: msg}) %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+        <%= react_component('Alert', {text: alert}) %>
+<%= form_for @organisme do |form| %>
+    <h2>Referent Organism</h2>
+    <div class="row">
+        <div class="col-sm-4">
+            <%= form.label :name %><br>
+            <%= form.text_field :name %><br>
+
+            <%= form.label :email %><br>
+            <%= form.text_field :email %><br>
+
+            <%= form.label :website %><br>
+            <%= form.text_field :website %>
         </div>
-    <% end %>
-            <%= react_component('Alert', {text: alert}) %>
-    <%= form_for @organisme do |form| %>
-        <h2>Referent Organism</h2>
-        <div class="row">
+        <%= form.fields_for :address do |address_form| %>
             <div class="col-sm-4">
-                <%= form.label :name %><br>
-                <%= form.text_field :name %><br>
+                <%= address_form.label :civic_number %><br>
+                <%= address_form.text_field :civic_number %><br>
 
-                <%= form.label :email %><br>
-                <%= form.text_field :email %><br>
+                <%= address_form.label :street %><br>
+                <%= address_form.text_field :street %><br>
 
-                <%= form.label :website %><br>
-                <%= form.text_field :website %>
+                <%= address_form.label :city %><br>
+                <%= address_form.text_field :city %><br>
+
+                <%= address_form.label :province %><br>
+                <%= address_form.text_field :province %><br>
+
+                <%= address_form.label :postcode %><br>
+                <%= address_form.text_field :postcode %><br>
             </div>
+        <% end %>
+        <%= form.fields_for :telephone do |telephones_form| %>
 
+            <div class="col-sm-4">
+                <%= telephones_form.label :work %><br>
+                <%= telephones_form.text_field :work %><br>
 
-            <%= form.fields_for :address do |address_form| %>
-                <div class="col-sm-4">
-                    <%= address_form.label :civic_number %><br>
-                    <%= address_form.text_field :civic_number %><br>
-
-                    <%= address_form.label :street %><br>
-                    <%= address_form.text_field :street %><br>
-
-                    <%= address_form.label :city %><br>
-                    <%= address_form.text_field :city %><br>
-
-                    <%= address_form.label :province %><br>
-                    <%= address_form.text_field :province %><br>
-
-                    <%= address_form.label :postcode %><br>
-                    <%= address_form.text_field :postcode %><br>
-                </div>
-            <% end %>
-            <%= form.fields_for :telephone do |telephones_form| %>
-
-                <div class="col-sm-4">
-                    <%= telephones_form.label :work %><br>
-                    <%= telephones_form.text_field :work %><br>
-
-                    <%= telephones_form.label :fax %><br>
-                    <%= telephones_form.text_field :fax %><br>
-                </div>
-            <% end %>
-        </div>
-        <div class="row">
-            <%= form.submit %>
-        </div>
-    <% end %>
+                <%= telephones_form.label :fax %><br>
+                <%= telephones_form.text_field :fax %><br>
+            </div>
+        <% end %>
+    </div>
+    <div class="row">
+        <%= form.submit %>
+    </div>
 <% end %>

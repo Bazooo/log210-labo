@@ -1,0 +1,12 @@
+<% user_profile = current_user.user_profile.to_json %>
+<% user_phone = current_user.user_profile.user_phone.to_json %>
+<% diplomas = current_user.user_profile.diploma.to_json %>
+
+<%= react_component('UserProfileEditUserForm',
+    {
+        token: form_authenticity_token,
+        profile: user_profile,
+        phone: user_phone,
+        diplomas: diplomas
+    })
+%>
