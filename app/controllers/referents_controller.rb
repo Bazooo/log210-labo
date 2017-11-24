@@ -18,8 +18,7 @@ class ReferentsController < ApplicationController
   # GET /referents/new
   def new
     @referent = Referent.new
-    @reforganism = Reforganism.find(params[:id])
-    @referent.reforganisms << @reforganism
+    @reforganismId = params[:id]
   end
 
   # GET /referents/1/edit
@@ -30,6 +29,8 @@ class ReferentsController < ApplicationController
   # POST /referents.json
   def create
     @referent = Referent.new(referent_params)
+    @reforganism = Reforganism.find(params[:reforganismId])
+    @referent.reforganisms << @reforganism
     respond_to do |format|
       if @referent.save
         @reforganism = @referent.reforganisms.last
