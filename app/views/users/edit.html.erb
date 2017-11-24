@@ -1,0 +1,39 @@
+<div class="container">
+  <h3>Editing Order No <%= user.id %></h3>
+  <hr />
+  <% if user.errors.any? %>
+      <div class="alert alert-danger">
+        <h2>
+          <%= pluralize(@user.errors.count, "error")%>
+          prohibited this user from being saved:
+        </h2>
+        <ul>
+          <%= user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+  <% end %>
+
+  <%= form_for user do |f| %>
+      <div class="row">
+        <div class="col-xs-12 form-group">
+          <%= f.label :email %>
+          <%= f.number_field :email, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 form-group">
+          <%= f.label :role %>
+          <%= f.select :role, options_for_select(@roles.collect { |s| [s[0].humanize, s[0]] }, selected: @user.role), {} , class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 form-group">
+          <%= f.submit "Save", class: "btn btn-primary" %>
+        </div>
+      </div>
+  <% end %>
+</div>

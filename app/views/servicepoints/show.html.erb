@@ -1,0 +1,19 @@
+<h2><%= @service_point.name %></h2>
+<div class="row">
+  <div class="col-sm-4">
+    <p>
+      <strong>Address:</strong>
+      <%= @service_point.address %><br>
+      <strong>Phone:</strong>
+      <%= @service_point.phone %><br>
+      <strong>Email:</strong>
+      <%= @service_point.email %><br>
+      <strong>Fax:</strong>
+      <%= @service_point.fax %><br>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+<%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, organism_path(@organisme) %>
+</div>

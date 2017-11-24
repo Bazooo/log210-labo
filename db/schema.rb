@@ -10,38 +10,121 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171017012207) do
+ActiveRecord::Schema.define(version: 20171116142815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "adresses", force: :cascade do |t|
-    t.string "no_civique"
-    t.string "rue"
-    t.string "ville"
+  create_table "addresses", force: :cascade do |t|
+    t.string "civic_number"
+    t.string "street"
+    t.string "city"
     t.string "province"
-    t.string "code_postal"
+    t.string "postcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organisme_id"
-    t.index ["organisme_id"], name: "index_adresses_on_organisme_id"
+    t.bigint "reforganism_id"
+    t.index ["reforganism_id"], name: "index_addresses_on_reforganism_id"
   end
 
-  create_table "organismes", force: :cascade do |t|
-    t.string "nom"
-    t.string "couriel"
-    t.string "site_web"
+  create_table "referent_searches", force: :cascade do |t|
+    t.string "familyname"
+    t.string "surname"
+    t.string "nameRefOrganism"
+    t.string "title"
+    t.string "telephone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "referents", force: :cascade do |t|
+    t.string "familyName"
+    t.string "surname"
+    t.string "title"
+    t.string "telephone"
+    t.string "cellphone"
+    t.string "fax"
+    t.string "email"
+    t.integer "preference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "referents_reforganisms", id: false, force: :cascade do |t|
+    t.bigint "referent_id", null: false
+    t.bigint "reforganism_id", null: false
+    t.index ["referent_id", "reforganism_id"], name: "index_referents_reforganisms_on_referent_id_and_reforganism_id"
+  end
+
+  create_table "diplomas", force: :cascade do |t|
+    t.string "program_name"
+    t.string "institution_name"
+    t.string "address"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_profile_id"
+    t.index ["user_profile_id"], name: "index_diplomas_on_user_profile_id"
+  end
+
+  create_table "organisms", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.string "fax"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_organisms_on_user_id"
+  end
+
+  create_table "reforganisms", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active", default: true
+  end
+
+  create_table "servicepoints", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.string "fax"
+    t.bigint "organism_id"
+    t.index ["organism_id"], name: "index_servicepoints_on_organism_id"
   end
 
   create_table "telephones", force: :cascade do |t|
-    t.string "bureau"
-    t.string "telecopie"
+    t.string "work"
+    t.string "fax"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "organisme_id"
-    t.index ["organisme_id"], name: "index_telephones_on_organisme_id"
+    t.bigint "reforganism_id"
+    t.index ["reforganism_id"], name: "index_telephones_on_reforganism_id"
+  end
+
+  create_table "user_phones", force: :cascade do |t|
+    t.string "cell_number"
+    t.string "home_number"
+    t.string "work_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_profile_id"
+    t.index ["user_profile_id"], name: "index_user_phones_on_user_profile_id"
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "organism_role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -64,8 +147,12 @@ ActiveRecord::Schema.define(version: 20171017012207) do
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "diplomas", "user_profiles"
+  add_foreign_key "user_phones", "user_profiles"
+  add_foreign_key "user_profiles", "users"
 end

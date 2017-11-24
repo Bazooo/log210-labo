@@ -31,6 +31,11 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :role %>
+    <%= f.select :role, options_for_select(@roles.collect {|s| [s[3].humanize, s[3]]}, selected: @users.role), {}, class:"form-control" %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
