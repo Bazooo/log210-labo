@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124051737) do
+ActiveRecord::Schema.define(version: 20171129042440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20171124051737) do
   end
 
   create_table "referent_searches", force: :cascade do |t|
-    t.string "familyname"
+    t.string "familyName"
     t.string "surname"
     t.string "nameRefOrganism"
     t.string "title"

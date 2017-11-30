@@ -26,6 +26,9 @@
         <td><%= referent.email %></td>
         <td><%= referent.preference %></td>
         <td><%= link_to 'Show', referent %></td>
+        <% if !@reforganismId.blank?%>
+            <td><%= link_to "Add Referent",  %></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>

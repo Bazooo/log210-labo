@@ -6,8 +6,6 @@ class ReferentsController < ApplicationController
   def index
     @reforganism = Reforganism.find(params[:id])
     @referents = @reforganism.referents
-    #@referent = @reforganism.referents
-    #@referents = Referent.includes(:reforganisms_referents).where(['reforganisms_referents.id = ?', params[:id]])
   end
 
   # GET /referents/1
@@ -18,27 +16,37 @@ class ReferentsController < ApplicationController
   # GET /referents/new
   def new
     @referent = Referent.new
-    @reforganismId = params[:id]
+    @reforganismId = params[:id] if present?
   end
 
   # GET /referents/1/edit
   def edit
+    @reforganismId = params[:refId]
   end
 
   # POST /referents
   # POST /referents.json
   def create
     @referent = Referent.new(referent_params)
-    @reforganism = Reforganism.find(params[:reforganismId])
+    @reforganismId = params[:reforganismId]
+    @reforganism = Reforganism.find(@reforganismId)
     @referent.reforganisms << @reforganism
+
+    @okEmail = Referent.find_by_email(@referent.email)
     respond_to do |format|
-      if @referent.save
-        @reforganism = @referent.reforganisms.last
-        format.html { redirect_to @referent, notice: 'Referent was successfully created.' }
-        format.json { render :show, status: :created, location: @referent }
-      else
-        format.html { render :new }
+      if !@okEmail.blank?
+        @referent.errors.add(:email, message = "Email already taken.")
+        format.html { render :new, :rid => params[:reforganismId] }
         format.json { render json: @referent.errors, status: :unprocessable_entity }
+      else
+        if @referent.save
+          @reforganism = @referent.reforganisms.last
+          format.html { redirect_to referent_path(@referent, :refId => @reforganism.id), notice: 'Referent was successfully created.'}
+          format.json { render :show, status: :created, location: @referent }
+        else
+          format.html { render :new}
+          format.json { render json: @referent.errors, status: :conflict }
+        end
       end
     end
   end
@@ -48,7 +56,7 @@ class ReferentsController < ApplicationController
   def update
     respond_to do |format|
       if @referent.update(referent_params)
-        format.html { redirect_to @referent, notice: 'Referent was successfully updated.' }
+        format.html { redirect_to referent_path(@referent, :refId => params[:reforganismId]), notice: 'Referent was successfully updated.'}
         format.json { render :show, status: :ok, location: @referent }
       else
         format.html { render :edit }
@@ -62,8 +70,24 @@ class ReferentsController < ApplicationController
   def destroy
     @referent.destroy
     respond_to do |format|
-      format.html { redirect_to referents_url, notice: 'Referent was successfully destroyed.' }
+      format.html { redirect_to referents_url(:id => params[:refId]), notice: 'Referent was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def addreforganism
+    @referent = Referent.find(params[:id])
+    @referentOrganism = ReforganismReferent.find(params[:refOrgId])
+    @referent.reforganisms << @referentOrganism
+
+    respond_to do |format|
+      if @referent.update(referent_params)
+        format.html { redirect_to referent_path(@referent, :refId => params[:reforganismId]), notice: 'Referent was successfully added.'}
+        format.json { render :show, status: :ok, location: @referent }
+      else
+        format.html { render :edit }
+        format.json { render json: @referent.errors, status: :unprocessable_entity }
+      end
     end
   end
 
