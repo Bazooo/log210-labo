@@ -77,15 +77,15 @@ class ReferentsController < ApplicationController
 
   def addreforganism
     @referent = Referent.find(params[:id])
-    @referentOrganism = ReforganismReferent.find(params[:refOrgId])
+    @referentOrganism = Reforganism.find(params[:refId])
     @referent.reforganisms << @referentOrganism
 
     respond_to do |format|
-      if @referent.update(referent_params)
-        format.html { redirect_to referent_path(@referent, :refId => params[:reforganismId]), notice: 'Referent was successfully added.'}
+      if @referent.update_attributes(referent_relations)
+        format.html { redirect_to referent_path(@referent, :refId => params[:refId]), notice: 'Referent was successfully added.'}
         format.json { render :show, status: :ok, location: @referent }
       else
-        format.html { render :edit }
+        format.html { render :back }
         format.json { render json: @referent.errors, status: :unprocessable_entity }
       end
     end
@@ -100,5 +100,9 @@ class ReferentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def referent_params
       params.require(:referent).permit(:familyName, :surname, :title, :telephone, :cellphone, :fax, :email, :preference)
+    end
+
+    def referent_relations
+      params.permit(:reforganisms)
     end
 end

@@ -1,22 +1,5 @@
-<h1>Advanced Search</h1>
 
-<%= form_for @referentSearch do |f| %>
-    <div class="field">
-      <%= f.label :familyName %><br />
-      <%= f.text_field :familyName %>
-    </div>
-    <div class="field">
-      <%= f.label :surname %><br />
-      <%= f.text_field :surname %>
-    </div>
-    <div class="field">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
-    </div>
-    <div class="field">
-      <%= f.label :telephone %><br />
-      <%= f.text_field :telephone %>
-    </div>
-    <div class="actions"><%= f.submit "Search Referent" %></div>
-<% end %>
+
+<%= react_component('Alert', {text: alert}) %>
+<%= react_component("ReferentSearchCreateForm", {token: form_authenticity_token, reforganismId: @reforganismId}) %>
 

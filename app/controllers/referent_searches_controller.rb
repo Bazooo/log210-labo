@@ -1,15 +1,18 @@
 class ReferentSearchesController < ApplicationController
   def new
     @referentSearch = ReferentSearch.new
+    @reforganismId = params[:refId] if present?
   end
 
   def create
+    @refId = params[:reforganismId]
     @referentSearch = ReferentSearch.create!(referent_search_params)
-    redirect_to @referentSearch
+    redirect_to referent_search_path(@referentSearch, :refId => @refId)
   end
 
   def show
     @referentSearch = ReferentSearch.find(params[:id])
+    @reforganismId = params[:refId]
   end
 
   private

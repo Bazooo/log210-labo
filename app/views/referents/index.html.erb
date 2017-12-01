@@ -37,6 +37,6 @@
 </table>
 
 <br>
-<p><%= link_to "Search Referent", new_referent_search_path %></p>
+<p><%= link_to "Search Referent", new_referent_search_path(:refId => @reforganism.id) %></p>
 <%= link_to 'New Referent', new_referent_path(:id => @reforganism.id) %>
 <p><%= link_to "Back", reforganisms_path() %></p>

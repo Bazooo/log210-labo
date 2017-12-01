@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :users, except: :create
 
   post 'create_user' => 'users#create', as: :create_user
+
+  get 'referents/addreforganism' => 'referents#addreforganism', as: :add_ref_organism
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :reforganisms
   resources :addresses
