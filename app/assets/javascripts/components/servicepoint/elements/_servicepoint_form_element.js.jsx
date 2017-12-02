@@ -104,92 +104,12 @@ class ServicePointInputFax extends ServicePointInput{
     }
 }
 
-class ServicePointCreateInputName extends ServicePointInput {
-    constructor(props) {
-        super(props);
-        this.name = props.name;
-    }
-    render() {
-        const data = this.getData("name");
-        let content = (
-                <input type="text" className="form-control" id={data.id} name={data.name}/>
-        );
-        return content;
-    }
-}
 
-class ServicePointCreateInputAddress extends ServicePointInput{
-    constructor(props) {
-        super(props);
-        this.address = props.address;
-    }
-    render() {
-        const data = this.getData("address");
-        let content = (
-                <input type="text"  className="form-control" id={data.id} name={data.name}/>
-        );
-
-        return content;
-    }
-}
-
-class ServicePointCreateInputPhone extends ServicePointInput{
-    constructor(props) {
-        super(props);
-        this.phone = props.phone;
-    }
-    render() {
-        const data = this.getData("phone");
-        let content = (
-                <input type="text"  className="form-control" id={data.id} name={data.name}/>
-        );
-
-        return content;
-    }
-}
-
-class ServicePointCreateInputEmail extends ServicePointInput{
-    constructor(props) {
-        super(props);
-        this.email = props.email;
-    }
-    render() {
-        const data = this.getData("email");
-        let content = (
-                <input type="text"  className="form-control" id={data.id} name={data.name}/>
-        );
-
-        return content;
-    }
-}
-
-class ServicePointCreateInputFax extends ServicePointInput{
-    constructor(props) {
-        super(props);
-        this.fax = props.fax;
-    }
-    render() {
-        const data = this.getData("fax");
-        let content = (
-                <input type="text"  className="form-control" id={data.id} name={data.name} />
-        );
-
-        return content;
-    }
-}
 
 class ServicePointButtonUpdate extends React.Component {
     render() {
         return(
             <button type="submit" className="btn btn-primary" name="commit" data-disable-with="Update ServicePoint">Update Service Point</button>
-        );
-    }
-}
-
-class ServicePointButtonCreate extends React.Component {
-    render() {
-        return(
-            <button type="submit" className="btn btn-primary" name="commit" data-disable-with="Create ServicePoint">Create Service Point</button>
         );
     }
 }

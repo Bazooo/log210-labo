@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171116142815) do
+ActiveRecord::Schema.define(version: 20171202014249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,28 @@ ActiveRecord::Schema.define(version: 20171116142815) do
     t.datetime "updated_at", null: false
     t.bigint "reforganism_id"
     t.index ["reforganism_id"], name: "index_addresses_on_reforganism_id"
+  end
+
+  create_table "diplomas", force: :cascade do |t|
+    t.string "program_name"
+    t.string "institution_name"
+    t.string "address"
+    t.datetime "date_start"
+    t.datetime "date_end"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_profile_id"
+    t.index ["user_profile_id"], name: "index_diplomas_on_user_profile_id"
+  end
+
+  create_table "organisms", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.string "email"
+    t.string "fax"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_organisms_on_user_id"
   end
 
   create_table "referent_searches", force: :cascade do |t|
@@ -56,28 +78,6 @@ ActiveRecord::Schema.define(version: 20171116142815) do
     t.index ["referent_id", "reforganism_id"], name: "index_referents_reforganisms_on_referent_id_and_reforganism_id"
   end
 
-  create_table "diplomas", force: :cascade do |t|
-    t.string "program_name"
-    t.string "institution_name"
-    t.string "address"
-    t.datetime "date_start"
-    t.datetime "date_end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "user_profile_id"
-    t.index ["user_profile_id"], name: "index_diplomas_on_user_profile_id"
-  end
-
-  create_table "organisms", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "phone"
-    t.string "email"
-    t.string "fax"
-    t.bigint "user_id"
-    t.index ["user_id"], name: "index_organisms_on_user_id"
-  end
-
   create_table "reforganisms", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(version: 20171116142815) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: true
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.bigint "places"
+    t.string "serviceType"
+    t.bigint "servicepoint_id"
+    t.index ["servicepoint_id"], name: "index_rooms_on_servicepoint_id"
   end
 
   create_table "servicepoints", force: :cascade do |t|

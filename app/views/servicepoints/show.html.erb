@@ -15,5 +15,44 @@
 </div>
 
 <div class="row">
+  <div class="col-sm-4">
+    <h2>Rooms</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Places</th>
+          <th>Service Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @service_point.rooms.each do |room| %>
+        <tr>
+          <td><%= room.name %></td>
+          <td><%= room.places %></td>
+          <td><%= room.serviceType %></td>
+          <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, room_path(room) %>
+            <%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_room_path(room) %>
+            <%= link_to '<span class="glyphicon glyphicon glyphicon glyphicon-trash"></span>'.html_safe, room_path(room),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+        <% end %>
+
+        <%= form_for @room do |form| %>
+        <tr>
+          <td><%= form.text_field :name %></td>
+          <td><%= form.text_field :places %></td>
+          <td><%= form.select :serviceType, ['CTS','EG', 'VS'] %></td>
+          <%= form.hidden_field :servicepoint_id, :value => @service_point.id %>
+          <td><%= form.submit %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </div>
+  </div>
+
+<div class="row">
 <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, organism_path(@organisme) %>
 </div>

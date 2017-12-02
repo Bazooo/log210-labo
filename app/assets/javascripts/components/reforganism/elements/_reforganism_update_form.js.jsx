@@ -1,12 +1,10 @@
 class ReforganismUpdateForm extends React.Component {
    constructor(props){
         super(props);
-        console.log(this.props.reforganism); // prints out whatever is inside props
         this.id = this.props.reforganism.id
     }
     render() {
         const action = '/reforganisms/' + this.id ;
-        console.log(action)
         let content = (
             <div>
                 <ReforganismInputName name={this.props.reforganism.name}/>
