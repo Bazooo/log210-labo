@@ -59,8 +59,12 @@ class RoomInputServiceType extends RoomInput{
         const data = this.getData("serviceType");
         let content = (
             <div>
-                <label htmlFor={data.id}>ServiceType</label>
-                <input type="text"  className="form-control" id={data.id} name={data.name} placeholder="Enter service type" defaultValue={this.serviceType}/>
+                <label htmlFor={data.id}>Service Type</label>
+                <select className="form-control" name={data.name} id={data.id} defaultValue={this.serviceType}>
+                    <option value="CTS">CTS</option>
+                    <option value="EG">EG</option>
+                    <option value="VS">VS</option>
+                </select>
             </div>
         );
 
