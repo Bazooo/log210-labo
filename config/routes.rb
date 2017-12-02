@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :referent_searches
   resources :organisms
   resources :servicepoints
+  resources :rooms
 end

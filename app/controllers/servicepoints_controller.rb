@@ -13,6 +13,7 @@ class ServicepointsController < ApplicationController
     end
 
     def show
+        @room = Room.new
         @service_point = Servicepoint.find(params[:id])
         @organisme = Organism.find(@service_point.organism_id)
     end
