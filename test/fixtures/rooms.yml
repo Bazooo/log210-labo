@@ -1,0 +1,13 @@
+one:
+  id: 999
+  name: White Room
+  places: 8
+  serviceType: EG
+  servicepoint_id: 999
+
+two:
+  id: 998
+  name: Black Room
+  places: 8
+  serviceType: EG
+  servicepoint_id: 999

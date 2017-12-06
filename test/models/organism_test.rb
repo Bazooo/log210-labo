@@ -2,8 +2,8 @@ require 'test_helper'
 
 class OrganismTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(email: 'test@123.com', password: '123456', password_confirmation: '123456', role: 'directeur')
-    @organism = Organism.new(name: 'lorganisme', address: '123 Quelquepart', phone: '555-234-9945', email: 'lorganisme@email.com', fax: '555-231-9946', user_id: @user.id)
+    @user = users(:one)
+    @organism = organism(:one)
   end
 
   test "create Organism" do
