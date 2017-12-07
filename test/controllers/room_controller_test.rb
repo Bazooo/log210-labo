@@ -15,6 +15,28 @@ class RoomControllerTest < ActionDispatch::IntegrationTest
         sign_out :user
     end
 
+    test "show" do
+        sign_in users(:one)
+        room = rooms(:one)
+
+        #show
+        get room_url(room)
+        assert_response :success
+
+        sign_out :user
+    end
+
+    test "edit" do
+        sign_in users(:one)
+        room = rooms(:one)
+
+        #edit
+        get edit_room_path(room)
+        assert_response :success
+
+        sign_out :user
+    end
+
     test "should update room while directeur" do
         sign_in users(:one)
         organism = organism(:one)

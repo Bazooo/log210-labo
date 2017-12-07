@@ -4,14 +4,14 @@ one:
   first_name: MyString
   last_name: MyString
   address: MyString
-  user_phone_id: 1
-  diploma_id: 1
+  #user_phone_id: 1
+  #diploma_id: 1
   organism_role: MyString
 
 two:
   first_name: MyString
   last_name: MyString
   address: MyString
-  user_phone_id: 1
-  diploma_id: 1
+  #user_phone_id: 1
+  #diploma_id: 1
   organism_role: MyString
