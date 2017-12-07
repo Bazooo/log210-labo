@@ -1,12 +1,17 @@
 require 'test_helper'
 
 class ReferentsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+
   setup do
     @referent = referents(:one)
+    @reforganism = reforganism(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
-    get referents_url
+
+    get referents_url(:id => @reforganism.id)
     assert_response :success
   end
 
@@ -17,10 +22,10 @@ class ReferentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create referent" do
     assert_difference('Referent.count') do
-      post referents_url, params: { referent: { cellphone: @referent.cellphone, email: @referent.email, familyName: @referent.familyName, fax: @referent.fax, preference: @referent.preference, surname: @referent.surname, telephone: @referent.telephone, title: @referent.title } }
+      post referents_url, params: { referent: { cellphone: 'cellphone', email: 'email', familyName: 'familyName', fax: 'fax', preference: 'fax', surname: 'surname', telephone: 'telephone', title: 'title' }, reforganismId: @reforganism.id }
     end
 
-    assert_redirected_to referent_url(Referent.last)
+    assert_redirected_to referent_url(Referent.last, :refId => @reforganism)
   end
 
   test "should show referent" do
@@ -34,7 +39,7 @@ class ReferentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update referent" do
-    patch referent_url(@referent), params: { referent: { cellphone: @referent.cellphone, email: @referent.email, familyName: @referent.familyName, fax: @referent.fax, preference: @referent.preference, surname: @referent.surname, telephone: @referent.telephone, title: @referent.title } }
+    patch referent_url(@referent), params: { referent: { cellphone: @referent.cellphone, email: @referent.email, familyName: @referent.familyName, fax: @referent.fax, preference: @referent.preference, surname: 'changement', telephone: @referent.telephone, title: @referent.title } }
     assert_redirected_to referent_url(@referent)
   end
 
