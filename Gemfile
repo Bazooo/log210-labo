@@ -36,6 +36,8 @@ gem 'jbuilder', '~> 2.5'
 # Use devise as authentification
 gem 'devise'
 
+# For test coverage
+gem 'simplecov', :require => false, :group => :test
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
