@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+    id: 999
     email: john@doe.com
     role: directeur
     confirmed_at: 2017-10-20 00:51:05.973703
@@ -12,6 +13,7 @@ one:
 # column: value
 #
 two:
+    id: 998
     email: abc@123.com
     role: coordonateur
     confirmed_at: 2017-10-20 00:51:05.973703
@@ -19,6 +21,7 @@ two:
 #
 
 three:
+    id: 997
     email: fooo@bar.com
     role: assistant
     confirmed_at: 2017-10-20 00:51:05.973703

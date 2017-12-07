@@ -1,12 +1,10 @@
 class ServicePointUpdateForm extends React.Component {
    constructor(props){
         super(props);
-        console.log(this.props.servicepoint.id); // prints out whatever is inside props
         this.id = this.props.servicepoint.id
     }
     render() {
         const action = '/servicepoints/' + this.id ;
-        console.log(action)
         let content = (
             <div>
                 <ServicePointInputName name={this.props.servicepoint.name} />

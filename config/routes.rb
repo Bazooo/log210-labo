@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   resources :organisms
   resources :servicepoints
   resources :referents
+  resources :rooms
 end
