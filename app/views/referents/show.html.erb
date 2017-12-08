@@ -41,4 +41,8 @@
 </p>
 
 <%= link_to 'Edit', edit_referent_path(@referent) %> |
-<%= link_to 'Back', referents_path(:id => params[:refId]) %>
+<% if params[:refId].blank? %>
+  <%= link_to 'Back', reforganisms_path() %>
+<% else %>
+  <%= link_to 'Back', referents_path(:id => params[:refId]) %>
+<% end %>
