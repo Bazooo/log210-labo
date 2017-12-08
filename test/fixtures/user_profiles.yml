@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  last_name: MyString
-  address: MyString
-  #user_phone_id: 1
-  #diploma_id: 1
-  organism_role: MyString
+  first_name: Joe
+  last_name: Bogus
+  address: 123 Main Street
+  organism_role: Boss
 
 two:
-  first_name: MyString
-  last_name: MyString
-  address: MyString
-  #user_phone_id: 1
-  #diploma_id: 1
-  organism_role: MyString
+  first_name: Lali
+  last_name: Gekio
+  address: 333 Papi Boulevard
+  organism_role: Pencil man
+
+three:
+  first_name: Mike
+  last_name: Lardoe
+  address: 12 Kabe Lato
+  organism_role: Conductor

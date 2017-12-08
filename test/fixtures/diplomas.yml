@@ -1,15 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  program_name: MyString
-  institution_name: MyString
-  address: MyString
+  program_name: Fighting mangeese
+  institution_name: Hunting Club
+  address: 123 Nowhere
   date_start: 2017-11-11 21:07:39
   date_end: 2017-11-11 21:07:39
 
 two:
-  program_name: MyString
-  institution_name: MyString
-  address: MyString
+  program_name: Dingaling
+  institution_name: Arsnetica
+  address: 111 Subert
+  date_start: 2017-11-11 21:07:39
+  date_end: 2017-11-11 21:07:39
+
+three:
+  program_name: Munching
+  institution_name: Cocada
+  address: 1 Lalo
   date_start: 2017-11-11 21:07:39
   date_end: 2017-11-11 21:07:39
