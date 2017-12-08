@@ -15,6 +15,17 @@ class RoomControllerTest < ActionDispatch::IntegrationTest
         sign_out :user
     end
 
+    test "should not create organism while coordonateur" do
+        sign_in users(:two)
+
+        assert_not_equal 200, status
+
+        post organisms_path rooms(:two)
+        assert_response :redirect
+
+        sign_out :user
+    end
+
     test "show" do
         sign_in users(:one)
         room = rooms(:one)
@@ -36,6 +47,7 @@ class RoomControllerTest < ActionDispatch::IntegrationTest
 
         sign_out :user
     end
+
 
     test "should update room while directeur" do
         sign_in users(:one)

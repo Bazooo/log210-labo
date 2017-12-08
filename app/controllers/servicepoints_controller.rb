@@ -1,8 +1,5 @@
 class ServicepointsController < ApplicationController
     before_action :director_only
-    def new
-        service_point = Servicepoint.new
-    end
 
     def create
         @service_point = Servicepoint.new(service_point_params)
