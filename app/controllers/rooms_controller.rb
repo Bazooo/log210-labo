@@ -1,8 +1,5 @@
 class RoomsController < ApplicationController
     before_action :director_only
-    def new
-        room = Room.new
-    end
 
     def create
         @room = Room.new(room_params)
