@@ -15,12 +15,12 @@ class UsersController < ApplicationController
   #   end
   # end
   #
-  def new
-    @user = User.new
-    @user_profile = @user.build_user_profile
-    @user_profile.build_user_phone
-    @user_profile.build_diploma
-  end
+  # def new
+  #   @user = User.new
+  #   @user_profile = @user.build_user_profile
+  #   @user_profile.build_user_phone
+  #   @user_profile.build_diploma
+  # end
 
   def create
     @user = User.new(user_params)
@@ -49,11 +49,11 @@ class UsersController < ApplicationController
 
   private
 
-  def director_only
-    unless current_user.directeur?
-      redirect_to root_path, :alert => "Access denied."
-    end
-  end
+  # def director_only
+  #   unless current_user.directeur?
+  #     redirect_to root_path, :alert => "Access denied."
+  #   end
+  # end
 
   def coordonateur_and_up
     if current_user.assistant?
