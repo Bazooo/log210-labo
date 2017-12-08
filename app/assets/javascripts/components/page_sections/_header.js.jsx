@@ -5,7 +5,7 @@ class Header extends React.Component {
             logout = <RestLink path={this.props.destroyPath} method="delete" content="Logout" className="btn btn-primary"/>;
             let organismLink, reforganismsLink;
             if(this.props.role == "directeur") {
-                organismLink = <Link root={this.props.root} link="user_profiles/edit" title="Edit profile" />;
+                organismLink = <Link root={this.props.root} link="organisms" title="Mes organismes" />;
             }
             if(this.props.role == "directeur" || this.props.role == "coordonateur") {
                 reforganismsLink = <Link root={this.props.root} link="reforganisms" title="Référents organismes" />;
