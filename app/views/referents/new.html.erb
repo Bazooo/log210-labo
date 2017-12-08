@@ -11,5 +11,5 @@
 <%= react_component("ReferentCreateForm", {token: form_authenticity_token, preferences: Referent.preferences.keys, reforganismId: @reforganismId}) %>
 
 <div class="row">
-  <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, referents_path() %>
+  <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, referents_path(:id => @reforganismId) %>
 </div>
