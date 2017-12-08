@@ -50,4 +50,10 @@ class ReferentsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to referents_url
   end
+
+  test "should add reforganism" do
+    get add_ref_organism_url(:id => @referent.id, :refId => @reforganism.id)
+    assert_redirected_to referent_url(@referent, :refId => @reforganism.id)
+  end
+
 end
