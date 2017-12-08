@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 999
+  name: Lorganimse
+  address: 637 rue quelquepart
+  email: lorganisme@email.com
+  phone: 555-555-5555
+  fax: 555-555-5555
+
+two:
+  id: 998
+  name: QuelqueChose
+  address: 555 Avenue Perdue
+  email: QQC@email.com
+  phone: 555-555-5556
+  fax: 555-555-5556

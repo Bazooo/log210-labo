@@ -1,2 +1,3 @@
-<%= render 'reforganisms/form' %>
+<!--<%= render 'reforganisms/form' %>-->
+<%= react_component("ReforganismUpdateForm", {token: form_authenticity_token, reforganism: @organisme, address: @address, telephone: @telephone}) %>
 <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, reforganisms_path %>

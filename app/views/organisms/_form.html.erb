@@ -1,0 +1,13 @@
+<% if @organisme.errors.any? %>
+    <div id="error_explanation">
+          <ul style="list-style-type:none">
+            <% @organisme.errors.full_messages.each do |msg| %>
+              <li><%= react_component('Alert', {text: msg}) %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+<%= react_component('Alert', {text: alert}) %>
+<div class="row">
+    <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, organisms_path() %>
+</div>
