@@ -7,10 +7,10 @@ class UserProfileCreateUserForm extends React.Component {
                     <h3 className="panel-title">Profil de l'employé</h3>
                 </div>
                 <div className="panel-body">
-                    <UserProfileInputString model={models} name="first_name" title="Prénom" />
-                    <UserProfileInputString model={models} name="last_name" title="Nom de famille" />
-                    <UserProfileInputString model={models} name="address" title="Adresse" />
-                    <UserProfileInputString model={models} name="organism_role" title="Rôle dans l'organisme" />
+                    <RestInputString model={models} name="first_name" title="Prénom" />
+                    <RestInputString model={models} name="last_name" title="Nom de famille" />
+                    <RestInputString model={models} name="address" title="Adresse" />
+                    <RestInputString model={models} name="organism_role" title="Rôle dans l'organisme" />
 
                     <UserPhoneCreateUserForm />
 

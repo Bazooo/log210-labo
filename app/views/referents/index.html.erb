@@ -28,14 +28,15 @@
         <td><%= referent.fax %></td>
         <td><%= referent.email %></td>
         <td><%= referent.preference %></td>
-        <td><%= link_to 'Show', referent %></td>
-        <td><%= link_to 'Edit', edit_referent_path(referent) %></td>
-        <td><%= link_to 'Destroy', referent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', referent_path(referent, :refId => @reforganism.id) %></td>
+        <td><%= link_to 'Edit', edit_referent_path(referent, :refId => @reforganism.id) %></td>
+        <td><%= link_to 'Destroy', referent_path(referent, :refId => @reforganism.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<p><%= link_to "Search Referent", new_referent_search_path %></p>
-<%= link_to 'New Referent', new_referent_path %>
+<p><%= link_to "Search Referent", new_referent_search_path(:refId => @reforganism.id) %></p>
+<%= link_to 'New Referent', new_referent_path(:id => @reforganism.id) %>
+<p><%= link_to "Back", reforganisms_path() %></p>

@@ -35,6 +35,7 @@
         <td><%= organisme.telephone.fax %></td>
         <td><%= link_to '<span class="glyphicon glyphicon-search"></span>'.html_safe, reforganism_path(organisme) %></td>
         <td><%= link_to '<span class="glyphicon glyphicon glyphicon-pencil"></span>'.html_safe, edit_reforganism_path(organisme) %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon glyphicon-user"></span>'.html_safe, referents_path(:id => organisme.id) %></td>
 
         <td>
             <% if organisme.active == true %>

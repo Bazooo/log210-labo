@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 999
   name: lesfourganismes
   email: lesfourganismes@email.com
   website: lesfourganismes.com
@@ -9,6 +10,7 @@ one:
   active: true
 
 two:
+  id: 998
   name: lesfourganismesCA
   email: lesfourganismesCA@email.com
   website: lesfourganismesCA.com

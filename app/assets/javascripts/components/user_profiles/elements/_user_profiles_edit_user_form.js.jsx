@@ -8,16 +8,16 @@ class UserProfileEditUserForm extends React.Component {
         const models = ["user_profile"];
         let content = (
             <div>
-                <UserProfileInputString model={models} val={profile.first_name} name="first_name" title="Prénom" />
-                <UserProfileInputString model={models} val={profile.last_name} name="last_name" title="Nom de famille" />
-                <UserProfileInputString model={models} val={profile.address} name="address" title="Adresse" />
-                <UserProfileInputString model={models} val={profile.organism_role} name="organism_role" title="Rôle dans l'organisme" />
+                <RestInputString model={models} val={profile.first_name} name="first_name" title="Prénom" />
+                <RestInputString model={models} val={profile.last_name} name="last_name" title="Nom de famille" />
+                <RestInputString model={models} val={profile.address} name="address" title="Adresse" />
+                <RestInputString model={models} val={profile.organism_role} name="organism_role" title="Rôle dans l'organisme" />
 
                 <UserPhoneEditUserForm phone={phone} />
 
                 <DiplomaEditUserForm diplomas={diplomas} />
 
-                <UserProfileButtonEdit />
+                <RestInputButton title="Update user" />
             </div>
         );
         return(

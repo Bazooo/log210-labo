@@ -25,7 +25,10 @@
         <td><%= referent.fax %></td>
         <td><%= referent.email %></td>
         <td><%= referent.preference %></td>
-        <td><%= link_to 'Show', referent %></td>
+        <td><%= link_to 'Show', referent_path(referent, :refId => @reforganismId) %></td>
+        <% if !@reforganismId.blank?  %>
+          <td><%= link_to "Add Referent", add_ref_organism_path(:id => referent.id, :refId => @reforganismId) %></td>
+        <% end %>
       </tr>
   <% end %>
   </tbody>

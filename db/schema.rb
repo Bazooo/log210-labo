@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 20171202014249) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "account_logs", force: :cascade do |t|
+    t.string "username"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "addresses", force: :cascade do |t|
     t.string "civic_number"
     t.string "street"
@@ -50,7 +57,7 @@ ActiveRecord::Schema.define(version: 20171202014249) do
   end
 
   create_table "referent_searches", force: :cascade do |t|
-    t.string "familyname"
+    t.string "familyName"
     t.string "surname"
     t.string "nameRefOrganism"
     t.string "title"
@@ -72,10 +79,13 @@ ActiveRecord::Schema.define(version: 20171202014249) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "referents_reforganisms", id: false, force: :cascade do |t|
-    t.bigint "referent_id", null: false
+  create_table "reforganism_referents", id: false, force: :cascade do |t|
     t.bigint "reforganism_id", null: false
-    t.index ["referent_id", "reforganism_id"], name: "index_referents_reforganisms_on_referent_id_and_reforganism_id"
+    t.bigint "referent_id", null: false
+    t.bigint "referents_id"
+    t.bigint "reforganisms_id"
+    t.index ["referents_id"], name: "index_reforganism_referents_on_referents_id"
+    t.index ["reforganisms_id"], name: "index_reforganism_referents_on_reforganisms_id"
   end
 
   create_table "reforganisms", force: :cascade do |t|
@@ -161,6 +171,8 @@ ActiveRecord::Schema.define(version: 20171202014249) do
   end
 
   add_foreign_key "diplomas", "user_profiles"
+  add_foreign_key "reforganism_referents", "referents", column: "referents_id"
+  add_foreign_key "reforganism_referents", "reforganisms", column: "reforganisms_id"
   add_foreign_key "user_phones", "user_profiles"
   add_foreign_key "user_profiles", "users"
 end

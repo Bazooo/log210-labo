@@ -17,6 +17,7 @@ class ReferentUpdateForm extends React.Component {
                 <ReferentInputFax fax={this.props.referent.fax}/>
                 <ReferentInputEmail email={this.props.referent.email}/>
                 <ReferentInputPreference preference={this.props.referent.preference} preferences={allPreferences}/>
+                <RestHiddenInput val={this.props.reforganismId} name="reforganismId" />
                 <ReferentButtonUpdate />
             </div>
         );

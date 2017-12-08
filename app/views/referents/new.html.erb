@@ -8,7 +8,7 @@
     </div>
 <% end %>
 <%= react_component('Alert', {text: alert}) %>
-<%= react_component("ReferentCreateForm", {token: form_authenticity_token, preferences: Referent.preferences.keys}) %>
+<%= react_component("ReferentCreateForm", {token: form_authenticity_token, preferences: Referent.preferences.keys, reforganismId: @reforganismId}) %>
 
 <div class="row">
   <%= link_to '<span class="glyphicon glyphicon glyphicon-chevron-left"></span> Back'.html_safe, referents_path() %>

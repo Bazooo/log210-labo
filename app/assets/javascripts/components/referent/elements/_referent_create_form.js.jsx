@@ -13,6 +13,7 @@ class ReferentCreateForm extends React.Component {
                 <ReferentInputFax />
                 <ReferentInputEmail />
                 <ReferentInputPreference preferences={allPreferences} />
+                <RestHiddenInput val={this.props.reforganismId} name="reforganismId" />
                 <ReferentButtonCreate />
             </div>
     );
