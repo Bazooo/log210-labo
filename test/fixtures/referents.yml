@@ -1,6 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 999
   familyName: MyString
   surname: MyString
   title: MyString
@@ -11,6 +12,7 @@ one:
   preference: 1
 
 two:
+  id: 998
   familyName: MyString
   surname: MyString
   title: MyString
